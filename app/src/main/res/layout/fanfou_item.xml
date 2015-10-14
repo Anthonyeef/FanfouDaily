@@ -4,17 +4,19 @@
               android:background="@color/feed_bg"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
-
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
+        android:padding="@dimen/padding"
+        android:layout_margin="@dimen/margin"
         android:orientation="horizontal"
         android:background="@drawable/bg_parent_rounded_corner">
 
-        <CircleImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/avatar"
             android:layout_width="@dimen/avatar_width"
             android:layout_height="@dimen/avatar_height"
+            android:layout_marginRight="@dimen/margin_left_right"
             android:src="@drawable/ic_avatar"/>
 
         <TextView
@@ -25,6 +27,7 @@
 
         <TextView
             android:id="@+id/timestamp"
+            android:text="@string/timestamp"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"/>
     </LinearLayout>

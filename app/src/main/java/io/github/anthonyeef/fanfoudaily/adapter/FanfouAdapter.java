@@ -27,14 +27,14 @@ public class FanfouAdapter extends RecyclerView.Adapter<FanfouAdapter.FanfouView
     private ArrayList<Fanfou> mFanfouList;
     private Context mContext;
 
-    public FanfouAdapter(Context context, ArrayList<Fanfou> mFanfouList) {
-        this.mFanfouList = mFanfouList;
+    public FanfouAdapter(Context context, ArrayList<Fanfou> List) {
+        this.mFanfouList = List;
         this.mContext = context;
     }
 
     @Override
     public int getItemCount() {
-        return mFanfouList.size();
+        return 0;
     }
 
     @Override
