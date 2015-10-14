@@ -20,7 +20,7 @@ public class PagerAdapter extends FragmentPagerAdapter{
 
     public void addFragment(Fragment fragment, String title) {
         mFragments.add(fragment);
-        mFragmentTitles.add(title)
+        mFragmentTitles.add(title);
     }
 
     @Override
