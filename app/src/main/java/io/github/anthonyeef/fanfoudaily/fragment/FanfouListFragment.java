@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import io.github.anthonyeef.fanfoudaily.R;
 import io.github.anthonyeef.fanfoudaily.adapter.FanfouAdapter;
 import io.github.anthonyeef.fanfoudaily.controller.AppController;
+import io.github.anthonyeef.fanfoudaily.json.Parser;
 import io.github.anthonyeef.fanfoudaily.model.Fanfou;
 
 /**
@@ -32,7 +33,6 @@ import io.github.anthonyeef.fanfoudaily.model.Fanfou;
  */
 public class FanfouListFragment extends Fragment {
     private static final String TAG = FanfouListFragment.class.getSimpleName();
-    private static final String weeklyUrl = "http://blog.fanfou.com/digest/json/2015-10-14.daily.json";
 
     private FanfouAdapter mFanfouAdapter;
 
@@ -40,8 +40,6 @@ public class FanfouListFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
-        fetchData(weeklyUrl);
 
         RecyclerView rv = (RecyclerView) inflater.inflate(
                 R.layout.fragment_item_list, container, false);
@@ -52,7 +50,8 @@ public class FanfouListFragment extends Fragment {
 
     private void setupRecyclerView(RecyclerView recyclerView) {
         recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
-        mFanfouAdapter = new FanfouAdapter(getContext(), mFanfous);
+
+        mFanfouAdapter = new FanfouAdapter(getContext(), );
         recyclerView.setAdapter(mFanfouAdapter);
     }
 
