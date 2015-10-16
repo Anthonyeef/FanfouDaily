@@ -63,26 +63,7 @@ public class FanfouListFragment extends Fragment {
             public void onResponse(JSONObject response) {
                 Log.d(TAG, response.toString());
                 try {
-                    JSONArray message = response.getJSONArray("msgs");
-                    ArrayList<Fanfou> mFanfous = new ArrayList<Fanfou>(message.length());
-                    for (int i = 0; i < message.length(); i++) {
-                        Fanfou fan = new Fanfou();
-                        JSONObject fanfou = (JSONObject)message.get(i);
 
-                        String name = fanfou.getString("realname");
-                        String avatar = fanfou.getString("avatar");
-                        String msg = fanfou.getString("msg");
-
-                        JSONObject image = fanfou.getJSONObject("img");
-                        String img = "";
-                        img = image.getString("preview");
-
-                        fan.setScreenName(name);
-                        fan.setAvatarUrl(avatar);
-                        fan.setStatus(msg);
-                        fan.setImageUrl(img);
-
-                        mFanfous.add(fan);
 
                     }
                 } catch (JSONException e) {
