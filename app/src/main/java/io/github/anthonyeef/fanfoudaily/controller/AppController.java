@@ -1,6 +1,7 @@
 package io.github.anthonyeef.fanfoudaily.controller;
 
 import android.app.Application;
+import android.content.Context;
 import android.text.TextUtils;
 
 import com.android.volley.Request;
@@ -26,6 +27,10 @@ public class AppController extends Application {
 
     public static synchronized AppController getInstance() {
         return mInstance;
+    }
+
+    public static Context getAppContext() {
+        return mInstance.getApplicationContext();
     }
 
     public RequestQueue getRequestQueue() {

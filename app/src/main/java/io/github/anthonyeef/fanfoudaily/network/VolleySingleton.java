@@ -1,0 +1,27 @@
+package io.github.anthonyeef.fanfoudaily.network;
+
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.Volley;
+
+import io.github.anthonyeef.fanfoudaily.controller.AppController;
+
+/**
+ * Created by anthonyeef on 10/17/15.
+ */
+public class VolleySingleton {
+    private static VolleySingleton instance = null;
+    private RequestQueue mRequestQueue;
+    private VolleySingleton() {
+        mRequestQueue = Volley.newRequestQueue(AppController.getAppContext());
+    }
+    public static VolleySingleton getInstance() {
+        if (instance == null) {
+            instance = new VolleySingleton();
+        }
+        return instance;
+    }
+
+    public RequestQueue getRequestQueue() {
+        return mRequestQueue;
+    }
+}
