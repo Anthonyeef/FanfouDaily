@@ -9,4 +9,7 @@ public class UrlEndpoints {
     public static final String URL_DAILY = ".daily";
     public static final String URL_WEEKLY = ".weekly";
     public static final String URL_END = ".json";
+
+    public static final String URL_TEMP = "2015-10-15";
+    public static final String URL_TEMP2 = "2015-10-12";
 }

@@ -6,6 +6,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import io.github.anthonyeef.fanfoudaily.json.Requestor;
 import io.github.anthonyeef.fanfoudaily.model.Fanfou;
 
 /**
@@ -13,6 +14,6 @@ import io.github.anthonyeef.fanfoudaily.model.Fanfou;
  */
 public class FanfouUtils {
     public static ArrayList<Fanfou> loadFanfouFeeds(RequestQueue requestQueue) {
-
+        JSONObject response = Requestor.requestJSON(requestQueue, UrlEndpoints.)
     }
 }
