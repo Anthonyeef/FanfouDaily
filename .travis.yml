@@ -21,6 +21,7 @@ android:
     # if you need to run emulator(s) during your tests
     - sys-img-armeabi-v7a-android-22
     - sys-img-x86-android-21
+    - sys-img-x86-android-23
 
     licenses:
     - 'android-sdk-license-.+'
