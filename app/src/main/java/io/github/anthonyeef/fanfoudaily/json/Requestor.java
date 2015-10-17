@@ -11,6 +11,8 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
+import io.github.anthonyeef.fanfoudaily.logging.LogUtils;
+
 /**
  * Created by anthonyeef on 10/16/15.
  */
@@ -29,11 +31,11 @@ public class Requestor {
         try {
             response = requestFuture.get(30000, TimeUnit.MILLISECONDS);
         } catch (InterruptedException e) {
-
+            LogUtils.m(e + "");
         } catch (ExecutionException e) {
-
+            LogUtils.m(e + "");
         } catch (TimeoutException e) {
-
+            LogUtils.m(e + "");
         }
         return response;
     }
