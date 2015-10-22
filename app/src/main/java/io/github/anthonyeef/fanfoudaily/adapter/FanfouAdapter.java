@@ -18,20 +18,27 @@ import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
 import io.github.anthonyeef.fanfoudaily.R;
 import io.github.anthonyeef.fanfoudaily.model.Fanfou;
+import io.github.anthonyeef.fanfoudaily.network.VolleySingleton;
 
 /**
  * Created by anthonyeef on 10/13/15.
  */
 public class FanfouAdapter extends RecyclerView.Adapter<FanfouAdapter.FanfouViewHolder>{
 
-    private ArrayList<Fanfou> mFanfouList;
+    private ArrayList<Fanfou> mFanfouList = new ArrayList<>();
+    private VolleySingleton mVolleySingleton;
+    private LayoutInflater mInflater;
     private Context mContext;
 
-    public FanfouAdapter(Context context, ArrayList<Fanfou> List) {
-        this.mFanfouList = List;
-        this.mContext = context;
+    public FanfouAdapter(Context context) {
+        mInflater = LayoutInflater.from(context);
+        mVolleySingleton = VolleySingleton.getInstance();
     }
 
+    public void setFanfous(ArrayList<Fanfou> listFanfous) {
+        this.mFanfouList = listFanfous;
+        notifyDataSetChanged();
+    }
     @Override
     public int getItemCount() {
         return 0;
@@ -63,7 +70,7 @@ public class FanfouAdapter extends RecyclerView.Adapter<FanfouAdapter.FanfouView
 
     @Override
     public FanfouViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        View itemView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.fanfou_item, viewGroup, false);
+        View itemView = mInflater.inflate(R.layout.fanfou_item, viewGroup, false);
         return new FanfouViewHolder(itemView);
     }
 

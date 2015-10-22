@@ -11,14 +11,21 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
+import java.util.ArrayList;
+
 import io.github.anthonyeef.fanfoudaily.R;
 import io.github.anthonyeef.fanfoudaily.adapter.FanfouAdapter;
+import io.github.anthonyeef.fanfoudaily.model.Fanfou;
 
 /**
  * Created by anthonyeef on 10/14/15.
  */
-public class FanfouListFragment extends Fragment {
-    private static final String TAG = FanfouListFragment.class.getSimpleName();
+public class FragmentDaily extends Fragment {
+    private static final String TAG = FragmentDaily.class.getSimpleName();
+    private static final String DAILY_FANFOU = "daily_fanfou";
+
+    private ArrayList<Fanfou> listFanfous = new ArrayList<>();
+    private AdapterFanfou
 
     private FanfouAdapter mFanfouAdapter;
 
