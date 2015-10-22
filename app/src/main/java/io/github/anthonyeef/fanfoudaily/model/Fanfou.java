@@ -1,9 +1,23 @@
 package io.github.anthonyeef.fanfoudaily.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by anthonyeef on 10/13/15.
  */
-public class Fanfou {
+public class Fanfou implements Parcelable{
+
+    public static final Parcelable.Creator<Fanfou> CREATOR
+            = new Parcelable.Creator<Fanfou>() {
+        public Fanfou createFromParcel(Parcel in) {
+            return new Fanfou(in);
+        }
+
+        public Fanfou[] newArray(int size) {
+            return new Fanfou[size];
+        }
+    };
     private String screenName;
     private String status;
     private String avatarUrl;
@@ -15,6 +29,9 @@ public class Fanfou {
 
     }
 
+    public Fanfou(Parcel in) {
+
+    }
     public Fanfou(String screenName, String status, String avatarUrl, String imageUrl, String timeStamp, int favourite) {
         super();
         this.screenName = screenName;
@@ -71,5 +88,19 @@ public class Fanfou {
 
     public void setFavourite(int favourite) {
         this.favourite = favourite;
+    }
+    @Override
+    public int describeContents() {
+
+        return 0;
+    }
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(screenName);
+        dest.writeString(status);
+        dest.writeString(avatarUrl);
+        dest.writeString(imageUrl);
+        dest.writeString(timeStamp);
+        dest.writeInt(favourite);
     }
 }
