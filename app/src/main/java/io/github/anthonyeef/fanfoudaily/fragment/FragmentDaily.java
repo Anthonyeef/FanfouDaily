@@ -52,6 +52,7 @@ public class FragmentDaily extends Fragment implements FanfouLoadedListener, Swi
 
         RecyclerView rv = (RecyclerView) inflater.inflate(
                 R.layout.fragment_item_list, container, false);
+        mSwipeRefreshLayout = (SwipeRefreshLayout) rv.findViewById(R.id.swipeFanfous);
         mRecyclerView = (RecyclerView) rv.findViewById(R.id.recyclerview);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(mRecyclerView.getContext()));
         mFanfouAdapter = new FanfouAdapter(getContext());
