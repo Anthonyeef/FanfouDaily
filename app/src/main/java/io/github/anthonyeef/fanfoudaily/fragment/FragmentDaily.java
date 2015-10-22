@@ -24,7 +24,6 @@ import io.github.anthonyeef.fanfoudaily.task.TaskLoadFanfou;
  * Created by anthonyeef on 10/14/15.
  */
 public class FragmentDaily extends Fragment implements FanfouLoadedListener, SwipeRefreshLayout.OnRefreshListener {
-    private static final String TAG = FragmentDaily.class.getSimpleName();
     private static final String DAILY_FANFOU = "daily_fanfou";
 
     private ArrayList<Fanfou> listFanfous = new ArrayList<>();
@@ -58,7 +57,7 @@ public class FragmentDaily extends Fragment implements FanfouLoadedListener, Swi
         mRecyclerView.setAdapter(mFanfouAdapter);
 
         if (savedInstanceState != null) {
-            listFanfous = savedInstanceState.getParcelableArrayList(TAG);
+            listFanfous = savedInstanceState.getParcelableArrayList(DAILY_FANFOU);
         } else {
             if (listFanfous.isEmpty()) {
                 new TaskLoadFanfou(this).execute();
@@ -72,7 +71,7 @@ public class FragmentDaily extends Fragment implements FanfouLoadedListener, Swi
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
 
-        outState.putParcelableArrayList(TAG, listFanfous);
+        outState.putParcelableArrayList(DAILY_FANFOU, listFanfous);
     }
 
     @Override
