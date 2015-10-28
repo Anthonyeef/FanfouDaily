@@ -32,6 +32,7 @@ public class FragmentWeekly extends Fragment implements FanfouLoadedListener, Sw
     private SwipeRefreshLayout mSwipeRefreshLayout;
     private RecyclerView mRecyclerView;
 
+
     public FragmentWeekly() {
 
     }

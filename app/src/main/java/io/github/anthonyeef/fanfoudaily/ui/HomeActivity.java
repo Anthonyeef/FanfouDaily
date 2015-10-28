@@ -8,6 +8,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
 import io.github.anthonyeef.fanfoudaily.R;
 import io.github.anthonyeef.fanfoudaily.adapter.PagerAdapter;
 import io.github.anthonyeef.fanfoudaily.fragment.FragmentDaily;
@@ -15,34 +17,24 @@ import io.github.anthonyeef.fanfoudaily.fragment.FragmentWeekly;
 
 public class HomeActivity extends AppCompatActivity {
 
-    ViewPager viewPager = null;
-    TabLayout tabLayout = null;
-    Toolbar toolbar = null;
-//    FloatingActionButton fab = null;
+    @Bind(R.id.viewPager) ViewPager viewPager;
+    @Bind(R.id.tabs) TabLayout tabLayout;
+    @Bind(R.id.toolbar) Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        ButterKnife.bind(this);
         setSupportActionBar(toolbar);
 
-        viewPager = (ViewPager) findViewById(R.id.viewPager);
         if (viewPager != null) {
             setupViewPager(viewPager);
         }
 
-        tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
 
-//        fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//            }
-//        });
     }
 
     @Override
