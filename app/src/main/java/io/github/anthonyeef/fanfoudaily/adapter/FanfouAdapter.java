@@ -13,6 +13,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
 import io.github.anthonyeef.fanfoudaily.R;
 import io.github.anthonyeef.fanfoudaily.model.Fanfou;
@@ -74,25 +76,15 @@ public class FanfouAdapter extends RecyclerView.Adapter<FanfouAdapter.FanfouView
 
     static class FanfouViewHolder extends RecyclerView.ViewHolder {
 
-        CircleImageView vAvatar;
-        TextView vScreenName;
-        TextView vTimeStamp;
-        TextView vStatus;
-        ImageView vImage;
-//        @Bind(R.id.avatar) CircleImageView vAvatar;
-//        @Bind(R.id.name) TextView vScreenName;
-//        @Bind(R.id.timestamp) TextView vTimeStamp;
-//        @Bind(R.id.status) TextView vStatus;
-//        @Bind(R.id.feedImage) ImageView vImage;
+        @Bind(R.id.avatar) CircleImageView vAvatar;
+        @Bind(R.id.name) TextView vScreenName;
+        @Bind(R.id.timestamp) TextView vTimeStamp;
+        @Bind(R.id.status) TextView vStatus;
+        @Bind(R.id.feedImage) ImageView vImage;
 
         public FanfouViewHolder(View itemView) {
             super(itemView);
-//            ButterKnife.bind(this, view);
-            vAvatar = (CircleImageView) itemView.findViewById(R.id.avatar);
-            vScreenName = (TextView) itemView.findViewById(R.id.name);
-            vTimeStamp = (TextView) itemView.findViewById(R.id.timestamp);
-            vStatus = (TextView) itemView.findViewById(R.id.status);
-            vImage = (ImageView) itemView.findViewById(R.id.feedImage);
+            ButterKnife.bind(this, itemView);
         }
 
    }

@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import io.github.anthonyeef.fanfoudaily.R;
 import io.github.anthonyeef.fanfoudaily.adapter.PagerAdapter;
 import io.github.anthonyeef.fanfoudaily.fragment.FragmentDaily;
+import io.github.anthonyeef.fanfoudaily.fragment.FragmentWeekly;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -63,7 +64,7 @@ public class HomeActivity extends AppCompatActivity {
     public void setupViewPager(ViewPager viewPager) {
         PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new FragmentDaily(), "每日精选");
-        adapter.addFragment(new FragmentDaily(), "每周精选");
+        adapter.addFragment(new FragmentWeekly(), "每周精选");
         viewPager.setAdapter(adapter);
     }
 }

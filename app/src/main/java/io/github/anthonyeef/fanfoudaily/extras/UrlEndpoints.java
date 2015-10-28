@@ -11,5 +11,5 @@ public class UrlEndpoints {
     public static final String URL_END = ".json";
 
     public static final String URL_TEMP = "2015-10-20";
-    public static final String URL_TEMP2 = "2015-10-20";
+    public static final String URL_TEMP2 = "2015-10-26";
 }

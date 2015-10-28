@@ -28,6 +28,8 @@ public class FanfouUtils {
 
     public static ArrayList<Fanfou> loadFanfouWeeklyFeeds(RequestQueue requestQueue) {
         JSONObject response = Requestor.requestJSON(requestQueue, UrlUtils.getRequestUrlFanfouWeekly());
+        Log.v("Getting response from", UrlUtils.getRequestUrlFanfouWeekly());
+        Log.v("Loading", response.toString());
         ArrayList<Fanfou> fanfous = Parser.parseFanfouJSON(response);
 
         return fanfous;

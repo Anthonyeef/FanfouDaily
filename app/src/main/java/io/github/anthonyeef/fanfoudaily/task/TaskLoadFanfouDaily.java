@@ -14,12 +14,12 @@ import io.github.anthonyeef.fanfoudaily.network.VolleySingleton;
 /**
  * Created by anthonyeef on 10/17/15.
  */
-public class TaskLoadFanfou extends AsyncTask<Void, Void, ArrayList<Fanfou>>{
+public class TaskLoadFanfouDaily extends AsyncTask<Void, Void, ArrayList<Fanfou>>{
     private FanfouLoadedListener mListener;
     private VolleySingleton mVolleySingleton;
     private RequestQueue mRequestQueue;
 
-    public TaskLoadFanfou(FanfouLoadedListener listener) {
+    public TaskLoadFanfouDaily(FanfouLoadedListener listener) {
         this.mListener = listener;
         mVolleySingleton = VolleySingleton.getInstance();
 
@@ -28,6 +28,11 @@ public class TaskLoadFanfou extends AsyncTask<Void, Void, ArrayList<Fanfou>>{
 
     @Override
     protected ArrayList<Fanfou> doInBackground(Void... params) {
+//        ArrayList<Fanfou> listFanfous = new ArrayList<>();
+//        if (params.equals("daily_fanfou")) {
+//            listFanfous = FanfouUtils.loadFanfouDailyFeeds(mRequestQueue);
+//        } else if (params.equals("weekly_fanfou"))
+//            listFanfous = FanfouUtils.loadFanfouWeeklyFeeds(mRequestQueue);
         ArrayList<Fanfou> listFanfous = FanfouUtils.loadFanfouDailyFeeds(mRequestQueue);
         return listFanfous;
     }
