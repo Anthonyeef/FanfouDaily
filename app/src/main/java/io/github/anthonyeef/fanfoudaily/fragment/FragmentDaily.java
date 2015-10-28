@@ -50,10 +50,10 @@ public class FragmentDaily extends Fragment implements FanfouLoadedListener, Swi
                              Bundle savedInstanceState) {
 
 
-        RecyclerView rv = (RecyclerView) inflater.inflate(
+        View view = inflater.inflate(
                 R.layout.fragment_item_list, container, false);
-        mSwipeRefreshLayout = (SwipeRefreshLayout) rv.findViewById(R.id.swipeFanfous);
-        mRecyclerView = (RecyclerView) rv.findViewById(R.id.recyclerview);
+        mSwipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipeFanfous);
+        mRecyclerView = (RecyclerView) view.findViewById(R.id.recyclerview);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(mRecyclerView.getContext()));
         mFanfouAdapter = new FanfouAdapter(getContext());
         mRecyclerView.setAdapter(mFanfouAdapter);
@@ -66,7 +66,7 @@ public class FragmentDaily extends Fragment implements FanfouLoadedListener, Swi
             }
         }
         mFanfouAdapter.setFanfous(listFanfous);
-        return rv;
+        return view;
     }
 
     @Override

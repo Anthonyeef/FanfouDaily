@@ -18,20 +18,11 @@ public class Fanfou implements Parcelable{
             return new Fanfou[size];
         }
     };
-    private String screenName;
-    private String status;
-    private String avatarUrl;
-    private String imageUrl;
-    private String timeStamp;
-    private int favourite;
-
-    public Fanfou() {
-
-    }
 
     public Fanfou(Parcel in) {
 
     }
+
     public Fanfou(String screenName, String status, String avatarUrl, String imageUrl, String timeStamp, int favourite) {
         super();
         this.screenName = screenName;
@@ -60,6 +51,17 @@ public class Fanfou implements Parcelable{
 
     public String getAvatarUrl() {
         return avatarUrl;
+    }
+
+    private String screenName;
+    private String status;
+    private String avatarUrl;
+    private String imageUrl;
+    private String timeStamp;
+    private int favourite;
+
+    public Fanfou() {
+
     }
 
     public void setAvatarUrl(String avatarUrl) {
