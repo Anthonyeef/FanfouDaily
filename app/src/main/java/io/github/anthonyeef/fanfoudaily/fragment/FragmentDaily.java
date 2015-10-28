@@ -29,8 +29,6 @@ public class FragmentDaily extends Fragment implements FanfouLoadedListener, Swi
 
     private ArrayList<Fanfou> listFanfous = new ArrayList<>();
     private FanfouAdapter mFanfouAdapter;
-//    private SwipeRefreshLayout mSwipeRefreshLayout;
-//    private RecyclerView mRecyclerView;
 
     @Bind(R.id.swipeFanfous) SwipeRefreshLayout mSwipeRefreshLayout;
     @Bind(R.id.recyclerview) RecyclerView mRecyclerView;
@@ -48,8 +46,6 @@ public class FragmentDaily extends Fragment implements FanfouLoadedListener, Swi
         View view = inflater.inflate(
                 R.layout.fragment_item_list, container, false);
         ButterKnife.bind(this, view);
-//        mSwipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipeFanfous);
-//        mRecyclerView = (RecyclerView) view.findViewById(R.id.recyclerview);
 
         mRecyclerView.setLayoutManager(new LinearLayoutManager(mRecyclerView.getContext()));
         mFanfouAdapter = new FanfouAdapter(getContext());

@@ -15,10 +15,10 @@ Still under building.
 
 
 ### To do:
-- Feed 中的超链接呈现
+- Feed 中的超链接呈现 [x]
 - 下拉刷新
 - 在解析 Api 之前先解析得到全部可以使用的 api 地址，从中挑选出 weekly 和 daily
-- 全面使用 butterknife 精简代码
+- 全面使用 butterknife 精简代码 [x]
 - 复用 FragmentDaily 和 FragmentWeekly，精简代码
 - 支持饭否帐号登录，增加收藏功能
 - 点击 Feed 后能够进入 FragmentDetail
