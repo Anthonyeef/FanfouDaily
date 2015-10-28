@@ -22,6 +22,7 @@ public class TaskLoadFanfou extends AsyncTask<Void, Void, ArrayList<Fanfou>>{
     public TaskLoadFanfou(FanfouLoadedListener listener) {
         this.mListener = listener;
         mVolleySingleton = VolleySingleton.getInstance();
+
         mRequestQueue = mVolleySingleton.getRequestQueue();
     }
 

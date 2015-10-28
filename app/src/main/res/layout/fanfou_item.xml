@@ -9,41 +9,50 @@
         android:layout_height="fill_parent"
         android:padding="@dimen/padding"
         android:layout_margin="@dimen/margin"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:background="@drawable/bg_parent_rounded_corner">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/avatar"
-            android:layout_width="@dimen/avatar_width"
-            android:layout_height="@dimen/avatar_height"
-            android:layout_marginRight="@dimen/margin_left_right"
-            android:src="@drawable/ic_avatar"/>
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="horizontal" >
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/avatar"
+                android:layout_width="@dimen/avatar_width"
+                android:layout_height="@dimen/avatar_height"
+                android:layout_marginRight="@dimen/margin_left_right"
+                android:src="@drawable/ic_avatar"/>
+
+            <TextView
+                android:id="@+id/name"
+                android:text="@string/name"
+                android:layout_marginTop="@dimen/margin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/timestamp"
+                android:text="@string/timestamp"
+                android:layout_marginLeft="@dimen/margin"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
 
         <TextView
-            android:id="@+id/name"
-            android:text="@string/name"
-            android:layout_width="fill_parent"
+            android:id="@+id/status"
+            android:paddingTop="@dimen/padding"
+            android:layout_marginTop="@dimen/margin"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
-        <TextView
-            android:id="@+id/timestamp"
-            android:text="@string/timestamp"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"/>
+        <ImageView
+            android:id="@+id/feedImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitStart"
+            android:adjustViewBounds="true"
+            android:background="@color/white"
+            android:visibility="visible"/>
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/status"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-    <ImageView
-        android:id="@+id/feedImage"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scaleType="fitStart"
-        android:adjustViewBounds="true"
-        android:background="@color/white"
-        android:visibility="visible"/>
 
 </LinearLayout>

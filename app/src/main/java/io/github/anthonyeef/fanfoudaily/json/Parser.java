@@ -12,10 +12,11 @@ import io.github.anthonyeef.fanfoudaily.extras.Constants;
 import io.github.anthonyeef.fanfoudaily.model.Fanfou;
 
 import static io.github.anthonyeef.fanfoudaily.extras.Keys.ComeoutSomeKeys.KEY_AVATAR;
-import static io.github.anthonyeef.fanfoudaily.extras.Keys.ComeoutSomeKeys.KEY_IMG;
 import static io.github.anthonyeef.fanfoudaily.extras.Keys.ComeoutSomeKeys.KEY_MESSAGE;
-import static io.github.anthonyeef.fanfoudaily.extras.Keys.ComeoutSomeKeys.KEY_PREVIEW;
 import static io.github.anthonyeef.fanfoudaily.extras.Keys.ComeoutSomeKeys.KEY_REALNAME;
+import static io.github.anthonyeef.fanfoudaily.extras.Keys.ComeoutSomeKeys.KEY_TIME;
+import static io.github.anthonyeef.fanfoudaily.extras.Keys.ComeoutSomeKeys.KEY_PREVIEW;
+import static io.github.anthonyeef.fanfoudaily.extras.Keys.ComeoutSomeKeys.KEY_IMG;
 
 /**
  * Created by anthonyeef on 10/16/15.
@@ -23,7 +24,7 @@ import static io.github.anthonyeef.fanfoudaily.extras.Keys.ComeoutSomeKeys.KEY_R
 public class Parser {
     public static ArrayList<Fanfou> parseFanfouJSON(JSONObject response) {
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        ArrayList<Fanfou> fanfous = new ArrayList<Fanfou>();
+        ArrayList<Fanfou> fanfous = new ArrayList<>();
         if (response != null && response.length() > 0) {
             try {
                 JSONArray message = response.getJSONArray("msgs");
@@ -32,22 +33,16 @@ public class Parser {
                     String avatar = Constants.NA;
                     String msg = Constants.NA;
                     String img = Constants.NA;
+                    String time = Constants.NA;
 
                     JSONObject fanfou = message.getJSONObject(i);
-
-                    if (Utils.contains(fanfou, KEY_REALNAME)) {
-                        name = fanfou.getString(KEY_REALNAME);
-                    }
-                    if (Utils.contains(fanfou, KEY_AVATAR)) {
-                        avatar = fanfou.getString(KEY_AVATAR);
-                    }
-
-                    if (Utils.contains(fanfou, KEY_MESSAGE)) {
-                        msg = fanfou.getString(KEY_MESSAGE);
-                    }
-                    if (Utils.contains(fanfou.getJSONObject(KEY_IMG), KEY_PREVIEW)) {
-                        img = fanfou.getJSONObject(KEY_IMG).getString(KEY_PREVIEW);
-                    }
+                    name = fanfou.getString(KEY_REALNAME);
+                    avatar = fanfou.getString(KEY_AVATAR);
+                    time = fanfou.getString(KEY_TIME);
+                    msg = fanfou.getString(KEY_MESSAGE);
+                    msg = msg.replaceAll("&quot;", "\"");
+                    img = fanfou.getJSONObject(KEY_IMG).getString(KEY_PREVIEW);
+                    img = img.replaceFirst("m0", "n0");
 
                     Fanfou fan = new Fanfou();
 
@@ -55,8 +50,11 @@ public class Parser {
                     fan.setAvatarUrl(avatar);
                     fan.setStatus(msg);
                     fan.setImageUrl(img);
+                    fan.setTimeStamp(time);
 
-                    fanfous.add(fan);
+                    if (!name.equals(Constants.NA)) {
+                        fanfous.add(fan);
+                    }
                 }
             } catch (JSONException e) {
 

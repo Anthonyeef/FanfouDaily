@@ -1,5 +1,7 @@
 package io.github.anthonyeef.fanfoudaily.extras;
 
+import android.util.Log;
+
 import com.android.volley.RequestQueue;
 
 import org.json.JSONObject;
@@ -17,6 +19,8 @@ import io.github.anthonyeef.fanfoudaily.model.Fanfou;
 public class FanfouUtils {
     public static ArrayList<Fanfou> loadFanfouDailyFeeds(RequestQueue requestQueue) {
         JSONObject response = Requestor.requestJSON(requestQueue, UrlUtils.getRequestUrlFanfouDaily());
+        Log.v("Getting response from", UrlUtils.getRequestUrlFanfouDaily());
+        Log.v("Loading", response.toString());
         ArrayList<Fanfou> fanfous = Parser.parseFanfouJSON(response);
 
         return fanfous;

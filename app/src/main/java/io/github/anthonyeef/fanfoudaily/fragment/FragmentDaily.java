@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import io.github.anthonyeef.fanfoudaily.R;
 import io.github.anthonyeef.fanfoudaily.adapter.FanfouAdapter;
 import io.github.anthonyeef.fanfoudaily.callbacks.FanfouLoadedListener;
+import io.github.anthonyeef.fanfoudaily.logging.LogUtils;
 import io.github.anthonyeef.fanfoudaily.model.Fanfou;
 import io.github.anthonyeef.fanfoudaily.task.TaskLoadFanfou;
 
@@ -87,6 +88,8 @@ public class FragmentDaily extends Fragment implements FanfouLoadedListener, Swi
 
     @Override
     public void onRefresh() {
+        LogUtils.t(getActivity(), "onRefresh");
+
         new  TaskLoadFanfou(this).execute();
     }
 
