@@ -4,9 +4,6 @@
     <color name="colorPrimaryDark">#039BE5</color>
     <color name="colorAccent">#FF4081</color>
 
-    <color name="feed_bg">#d3d6db</color>
-    <color name="feed_item_bg">#fff</color>
-    <color name="feed_item_border">#c2c3c8</color>
-
+    <color name="feed_bg">#EEEEEE</color>
     <color name="white">#ffffff</color>
 </resources>
