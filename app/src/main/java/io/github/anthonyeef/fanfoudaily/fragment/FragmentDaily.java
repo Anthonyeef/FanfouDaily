@@ -90,7 +90,7 @@ public class FragmentDaily extends Fragment implements FanfouLoadedListener, Swi
     public void onRefresh() {
         LogUtils.t(getActivity(), "onRefresh");
 
-        new  TaskLoadFanfou(this).execute();
+        new TaskLoadFanfou(this).execute();
     }
 
 }
