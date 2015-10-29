@@ -22,6 +22,9 @@ Still under building.
 - 复用 FragmentDaily 和 FragmentWeekly，精简代码
 - 支持饭否帐号登录，增加收藏功能
 - 点击 Feed 后能够进入 FragmentDetail
+- 自定義 `TextView` 中 Feed 的 CSS 樣式 
+- 自定義字體
+- 嘗試增加 `animation`
 
 
 ## Some thing I would like to write it here:

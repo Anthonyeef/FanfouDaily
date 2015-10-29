@@ -1,5 +1,6 @@
 package io.github.anthonyeef.fanfoudaily.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -16,6 +17,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import io.github.anthonyeef.fanfoudaily.R;
 import io.github.anthonyeef.fanfoudaily.adapter.FanfouAdapter;
+import io.github.anthonyeef.fanfoudaily.adapter.ItemClickSupport;
 import io.github.anthonyeef.fanfoudaily.callbacks.FanfouLoadedListener;
 import io.github.anthonyeef.fanfoudaily.logging.LogUtils;
 import io.github.anthonyeef.fanfoudaily.model.Fanfou;
@@ -59,6 +61,23 @@ public class FragmentDaily extends Fragment implements FanfouLoadedListener, Swi
             }
         }
         mFanfouAdapter.setFanfous(listFanfous);
+
+        /*Add ItemClickListener here*/
+        ItemClickSupport.addTo(mRecyclerView).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
+            @Override
+            public void onItemClicked(RecyclerView recyclerView, int position, View v) {
+//                Toast toast = Toast.makeText(getContext(), "You click an Item", Toast.LENGTH_SHORT);
+//                toast.show();
+//                Snackbar snack = Snackbar.make(v, "You click an Item.", Snackbar.LENGTH_SHORT);
+//                snack.show();
+                Fanfou fanfou = listFanfous.get(position);
+                Intent intent = new Intent(getActivity(), FragmentDetail.class);
+                intent.putExtra(DAILY_FANFOU, fanfou);
+
+                startActivity(intent);
+            }
+        });
+
         return view;
     }
 
