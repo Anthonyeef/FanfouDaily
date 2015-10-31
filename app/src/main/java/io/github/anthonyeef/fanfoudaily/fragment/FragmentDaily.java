@@ -17,11 +17,12 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import io.github.anthonyeef.fanfoudaily.R;
 import io.github.anthonyeef.fanfoudaily.adapter.FanfouAdapter;
-import io.github.anthonyeef.fanfoudaily.adapter.ItemClickSupport;
+import io.github.anthonyeef.fanfoudaily.adapter.OnItemTouchListener;
 import io.github.anthonyeef.fanfoudaily.callbacks.FanfouLoadedListener;
 import io.github.anthonyeef.fanfoudaily.logging.LogUtils;
 import io.github.anthonyeef.fanfoudaily.model.Fanfou;
 import io.github.anthonyeef.fanfoudaily.task.TaskLoadFanfouDaily;
+import io.github.anthonyeef.fanfoudaily.ui.UIStatus;
 
 /**
  * Created by anthonyeef on 10/14/15.
@@ -41,7 +42,7 @@ public class FragmentDaily extends Fragment implements FanfouLoadedListener, Swi
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
 
@@ -50,7 +51,19 @@ public class FragmentDaily extends Fragment implements FanfouLoadedListener, Swi
         ButterKnife.bind(this, view);
 
         mRecyclerView.setLayoutManager(new LinearLayoutManager(mRecyclerView.getContext()));
-        mFanfouAdapter = new FanfouAdapter(getContext());
+        mFanfouAdapter = new FanfouAdapter(getContext(),new OnItemTouchListener(){
+            @Override
+            public void onItemClick(View v, int position) {
+//                Toast.makeText(getContext(),"You click item:" + position, Toast.LENGTH_LONG).show();
+                Fanfou fanfou = listFanfous.get(position);
+                Intent intent = new Intent(getActivity(), UIStatus.class);
+                intent.putExtra("fanfou", fanfou);
+
+//                startActivity(intent);
+                getActivity().startActivity(intent);
+
+            }
+        });
         mRecyclerView.setAdapter(mFanfouAdapter);
 
         if (savedInstanceState != null) {
@@ -61,22 +74,6 @@ public class FragmentDaily extends Fragment implements FanfouLoadedListener, Swi
             }
         }
         mFanfouAdapter.setFanfous(listFanfous);
-
-        /*Add ItemClickListener here*/
-        ItemClickSupport.addTo(mRecyclerView).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
-            @Override
-            public void onItemClicked(RecyclerView recyclerView, int position, View v) {
-//                Toast toast = Toast.makeText(getContext(), "You click an Item", Toast.LENGTH_SHORT);
-//                toast.show();
-//                Snackbar snack = Snackbar.make(v, "You click an Item.", Snackbar.LENGTH_SHORT);
-//                snack.show();
-                Fanfou fanfou = listFanfous.get(position);
-                Intent intent = new Intent(getActivity(), FragmentDetail.class);
-                intent.putExtra(DAILY_FANFOU, fanfou);
-
-                startActivity(intent);
-            }
-        });
 
         return view;
     }

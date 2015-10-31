@@ -28,22 +28,45 @@ public class FanfouAdapter extends RecyclerView.Adapter<FanfouAdapter.FanfouView
     private ArrayList<Fanfou> mFanfouList = new ArrayList<>();
     private VolleySingleton mVolleySingleton;
     private LayoutInflater mInflater;
+    private OnItemTouchListener mOnItemTouchListener;
     private Context mContext;
 
-    public FanfouAdapter(Context context) {
+    public FanfouAdapter(Context context, OnItemTouchListener onItemTouchListener) {
+        this.mOnItemTouchListener = onItemTouchListener;
         mInflater = LayoutInflater.from(context);
         mVolleySingleton = VolleySingleton.getInstance();
+        mContext = context;
     }
 
     public void setFanfous(ArrayList<Fanfou> listFanfous) {
         this.mFanfouList = listFanfous;
         notifyDataSetChanged();
     }
+
     @Override
     public int getItemCount() {
         return mFanfouList.size();
     }
 
+
+    class FanfouViewHolder extends RecyclerView.ViewHolder {
+
+        @Bind(R.id.avatar) CircleImageView vAvatar;
+        @Bind(R.id.name) TextView vScreenName;
+        @Bind(R.id.timestamp) TextView vTimeStamp;
+        @Bind(R.id.status) TextView vStatus;
+        @Bind(R.id.feedImage) ImageView vImage;
+
+        Fanfou mFanfou;
+        View feed;
+
+        public FanfouViewHolder(View itemView) {
+            super(itemView);
+            feed = itemView;
+            ButterKnife.bind(this, itemView);
+        }
+
+   }
     @Override
     public void onBindViewHolder(final FanfouViewHolder fanfouViewHolder, int location){
         Fanfou current = mFanfouList.get(location);
@@ -56,6 +79,7 @@ public class FanfouAdapter extends RecyclerView.Adapter<FanfouAdapter.FanfouView
         fanfouViewHolder.vScreenName.setText(current.getScreenName());
         fanfouViewHolder.vTimeStamp.setText(current.getTimeStamp());
         fanfouViewHolder.vStatus.setText(current.getStatus());
+        fanfouViewHolder.mFanfou = current;
 
         if (current.getImageUrl() == null) {
             fanfouViewHolder.vImage.setVisibility(View.GONE);
@@ -71,21 +95,16 @@ public class FanfouAdapter extends RecyclerView.Adapter<FanfouAdapter.FanfouView
     @Override
     public FanfouViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View itemView = mInflater.inflate(R.layout.fanfou_item, viewGroup, false);
-        return new FanfouViewHolder(itemView);
+        final FanfouViewHolder holder = new FanfouViewHolder(itemView);
+
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mOnItemTouchListener.onItemClick(v, holder.getAdapterPosition());
+            }
+        });
+        return holder;
     }
 
-    static class FanfouViewHolder extends RecyclerView.ViewHolder {
 
-        @Bind(R.id.avatar) CircleImageView vAvatar;
-        @Bind(R.id.name) TextView vScreenName;
-        @Bind(R.id.timestamp) TextView vTimeStamp;
-        @Bind(R.id.status) TextView vStatus;
-        @Bind(R.id.feedImage) ImageView vImage;
-
-        public FanfouViewHolder(View itemView) {
-            super(itemView);
-            ButterKnife.bind(this, itemView);
-        }
-
-   }
 }
