@@ -28,11 +28,10 @@ public class FanfouAdapter extends RecyclerView.Adapter<FanfouAdapter.FanfouView
     private ArrayList<Fanfou> mFanfouList = new ArrayList<>();
     private VolleySingleton mVolleySingleton;
     private LayoutInflater mInflater;
-    private OnItemTouchListener mOnItemTouchListener;
+//    private OnItemTouchListener mOnItemTouchListener;
     private Context mContext;
 
-    public FanfouAdapter(Context context, OnItemTouchListener onItemTouchListener) {
-        this.mOnItemTouchListener = onItemTouchListener;
+    public FanfouAdapter(Context context) {
         mInflater = LayoutInflater.from(context);
         mVolleySingleton = VolleySingleton.getInstance();
         mContext = context;
@@ -43,6 +42,9 @@ public class FanfouAdapter extends RecyclerView.Adapter<FanfouAdapter.FanfouView
         notifyDataSetChanged();
     }
 
+//    public void setOnItemTouchListener (OnItemTouchListener onItemTouchListener) {
+//        this.mOnItemTouchListener = onItemTouchListener;
+//    }
     @Override
     public int getItemCount() {
         return mFanfouList.size();
@@ -97,12 +99,12 @@ public class FanfouAdapter extends RecyclerView.Adapter<FanfouAdapter.FanfouView
         View itemView = mInflater.inflate(R.layout.fanfou_item, viewGroup, false);
         final FanfouViewHolder holder = new FanfouViewHolder(itemView);
 
-        itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mOnItemTouchListener.onItemClick(v, holder.getAdapterPosition());
-            }
-        });
+//        itemView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                mOnItemTouchListener.onItemClick(v, holder.getAdapterPosition());
+//            }
+//        });
         return holder;
     }
 

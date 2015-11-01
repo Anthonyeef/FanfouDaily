@@ -1,6 +1,5 @@
 package io.github.anthonyeef.fanfoudaily.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -17,12 +16,10 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import io.github.anthonyeef.fanfoudaily.R;
 import io.github.anthonyeef.fanfoudaily.adapter.FanfouAdapter;
-import io.github.anthonyeef.fanfoudaily.adapter.OnItemTouchListener;
 import io.github.anthonyeef.fanfoudaily.callbacks.FanfouLoadedListener;
 import io.github.anthonyeef.fanfoudaily.logging.LogUtils;
 import io.github.anthonyeef.fanfoudaily.model.Fanfou;
 import io.github.anthonyeef.fanfoudaily.task.TaskLoadFanfouDaily;
-import io.github.anthonyeef.fanfoudaily.ui.UIStatus;
 
 /**
  * Created by anthonyeef on 10/14/15.
@@ -51,19 +48,19 @@ public class FragmentDaily extends Fragment implements FanfouLoadedListener, Swi
         ButterKnife.bind(this, view);
 
         mRecyclerView.setLayoutManager(new LinearLayoutManager(mRecyclerView.getContext()));
-        mFanfouAdapter = new FanfouAdapter(getContext(),new OnItemTouchListener(){
-            @Override
-            public void onItemClick(View v, int position) {
-//                Toast.makeText(getContext(),"You click item:" + position, Toast.LENGTH_LONG).show();
-                Fanfou fanfou = listFanfous.get(position);
-                Intent intent = new Intent(getActivity(), UIStatus.class);
-                intent.putExtra("fanfou", fanfou);
+        mFanfouAdapter = new FanfouAdapter(getContext());
+//            @Override
+//            public void onItemClick(View v, int position) {
+//                Toast.makeText(getContext(), "You click item:" + position, Toast.LENGTH_LONG).show();
+//                Fanfou fanfou = listFanfous.get(position);
+//                Intent intent = new Intent(getActivity(), UIStatus.class);
+//                intent.putExtra("fanfou", fanfou);
 
 //                startActivity(intent);
-                getActivity().startActivity(intent);
+//                getActivity().startActivity(intent);
 
-            }
-        });
+//            }
+//        });
         mRecyclerView.setAdapter(mFanfouAdapter);
 
         if (savedInstanceState != null) {
@@ -71,10 +68,9 @@ public class FragmentDaily extends Fragment implements FanfouLoadedListener, Swi
         } else {
             if (listFanfous.isEmpty()) {
                 new TaskLoadFanfouDaily(this).execute();
+                mFanfouAdapter.setFanfous(listFanfous);
             }
         }
-        mFanfouAdapter.setFanfous(listFanfous);
-
         return view;
     }
 

@@ -13,7 +13,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -21,7 +20,6 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import io.github.anthonyeef.fanfoudaily.R;
 import io.github.anthonyeef.fanfoudaily.adapter.FanfouAdapter;
-import io.github.anthonyeef.fanfoudaily.adapter.OnItemTouchListener;
 import io.github.anthonyeef.fanfoudaily.callbacks.FanfouLoadedListener;
 import io.github.anthonyeef.fanfoudaily.logging.LogUtils;
 import io.github.anthonyeef.fanfoudaily.model.Fanfou;
@@ -50,22 +48,21 @@ public class FragmentWeekly extends Fragment implements FanfouLoadedListener, Sw
         ButterKnife.bind(this, view);
 
         mRecyclerView.setLayoutManager(new LinearLayoutManager(mRecyclerView.getContext()));
-        mFanfouAdapter = new FanfouAdapter(getContext(), new OnItemTouchListener() {
-            @Override
-            public void onItemClick(View view, int position) {
-                Toast.makeText(getContext(),"You click item:" + position, Toast.LENGTH_LONG).show();
-            }
-        });
+        mFanfouAdapter = new FanfouAdapter(getContext());
+//            @Override
+//            public void onItemClick(View view, int position) {
+//                Toast.makeText(getContext(),"You click item:" + position, Toast.LENGTH_LONG).show();
+//            }
+//        });
         mRecyclerView.setAdapter(mFanfouAdapter);
-
         if (savedInstanceState != null) {
             listFanfous = savedInstanceState.getParcelableArrayList(WEEKLY_FANFOU);
         } else {
             if (listFanfous.isEmpty()) {
                 new TaskLoadFanfouWeekly(this).execute();
+                mFanfouAdapter.setFanfous(listFanfous);
             }
         }
-        mFanfouAdapter.setFanfous(listFanfous);
         return view;
     }
 
