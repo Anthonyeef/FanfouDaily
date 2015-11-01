@@ -20,7 +20,7 @@ public class Fanfou implements Parcelable{
     };
 
     public Fanfou(Parcel in) {
-
+        readFromParcel(in);
     }
 
     public Fanfou(String screenName, String status, String avatarUrl, String imageUrl, String timeStamp, int favourite) {
@@ -104,5 +104,12 @@ public class Fanfou implements Parcelable{
         dest.writeString(imageUrl);
         dest.writeString(timeStamp);
         dest.writeInt(favourite);
+    }
+    private void readFromParcel(Parcel in) {
+        screenName = in.readString();
+        status = in.readString();
+        avatarUrl = in.readString();
+        imageUrl = in.readString();
+        timeStamp = in.readString();
     }
 }

@@ -28,25 +28,22 @@ public class UIStatus extends AppCompatActivity{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Intent intent = getIntent();
+
 
         setContentView(R.layout.activity_status);
         ButterKnife.bind(this);
-        Intent intent = getIntent();
 
-        Fanfou feed = intent.getParcelableExtra("fanfou");
+        Fanfou feed = (Fanfou) intent.getParcelableExtra("feed");
 
-        String avatarurl = feed.getAvatarUrl();
-        String nametext = feed.getScreenName();
-        String timestamptext = feed.getTimeStamp();
-        String content = feed.getStatus();
-        String imageurl = feed.getImageUrl();
+        name1.setText(feed.getScreenName());
+        timestamp1.setText(feed.getTimeStamp());
+        status1.setText(feed.getStatus());
 
-        name1.setText(nametext);
-        timestamp1.setText(timestamptext);
-        status1.setText(content);
-
-        Picasso.with(this).load(avatarurl).into(avatar1);
-        Picasso.with(this).load(imageurl).into(image1);
+        Picasso.with(this).load(feed.getAvatarUrl()).into(avatar1);
+        if (!feed.getImageUrl().equals("")) {
+            Picasso.with(this).load(feed.getImageUrl()).into(image1);
+        }
     }
 
 }

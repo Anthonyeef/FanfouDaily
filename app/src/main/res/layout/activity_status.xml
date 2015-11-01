@@ -10,38 +10,53 @@
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/avatar1"
-            android:layout_margin="@dimen/margin"
-            android:layout_width="@dimen/avatar_width"
-            android:layout_height="@dimen/avatar_height"/>
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
+
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-            <TextView
-                android:id="@+id/name1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin"
+            android:orientation="horizontal">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/avatar1"
+                android:layout_margin="@dimen/margin"
+                android:layout_width="@dimen/avatar_width"
+                android:layout_height="@dimen/avatar_height"/>
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textStyle="bold"/>
-            <TextView
-                android:id="@+id/timestamp1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/name1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/margin"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:id="@+id/timestamp1"
+                    android:layout_margin="@dimen/margin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
         </LinearLayout>
+
+            <TextView
+                android:id="@+id/status1"
+                android:layout_margin="@dimen/margin"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+            <ImageView
+                android:id="@+id/image1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin"
+                android:scaleType="fitStart"
+                android:adjustViewBounds="true"
+                android:background="@color/white"
+                android:visibility="visible"/>
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/status1"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-    <ImageView
-        android:id="@+id/image1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scaleType="fitXY"/>
 </android.support.v7.widget.CardView>
 
 </LinearLayout>

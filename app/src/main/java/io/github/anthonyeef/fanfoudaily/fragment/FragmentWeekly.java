@@ -23,7 +23,6 @@ import io.github.anthonyeef.fanfoudaily.adapter.FanfouAdapter;
 import io.github.anthonyeef.fanfoudaily.callbacks.FanfouLoadedListener;
 import io.github.anthonyeef.fanfoudaily.logging.LogUtils;
 import io.github.anthonyeef.fanfoudaily.model.Fanfou;
-import io.github.anthonyeef.fanfoudaily.task.TaskLoadFanfouDaily;
 import io.github.anthonyeef.fanfoudaily.task.TaskLoadFanfouWeekly;
 
 public class FragmentWeekly extends Fragment implements FanfouLoadedListener, SwipeRefreshLayout.OnRefreshListener {
@@ -85,7 +84,7 @@ public class FragmentWeekly extends Fragment implements FanfouLoadedListener, Sw
     public void onRefresh() {
         LogUtils.t(getActivity(), "onRefresh");
         mSwipeRefreshLayout.setRefreshing(true);
-        new TaskLoadFanfouDaily(this).execute();
+        new TaskLoadFanfouWeekly(this).execute();
     }
 
 }

@@ -33,7 +33,7 @@ public class Parser {
                     String name = Constants.NA;
                     String avatar = Constants.NA;
                     String msg = Constants.NA;
-                    String img = Constants.NA;
+                    String img = "";
                     String time = Constants.NA;
 
                     JSONObject fanfou = message.getJSONObject(i);
@@ -42,15 +42,15 @@ public class Parser {
                     time = fanfou.getString(KEY_TIME);
                     msg = fanfou.getString(KEY_MESSAGE);
 
-//                    msg = msg.replaceAll("&quot;", "\"");
                     img = fanfou.getJSONObject(KEY_IMG).getString(KEY_PREVIEW);
-                    img = img.replaceFirst("m0", "n0");
+                    if (!img.equals("")) {
+                        img = img.replaceFirst("m0", "n0");
+                    }
 
                     Fanfou fan = new Fanfou();
 
                     fan.setScreenName(name);
                     fan.setAvatarUrl(avatar);
-//                    fan.setStatus(msg);
                     fan.setStatus(Html.fromHtml(msg).toString());
                     fan.setImageUrl(img);
                     fan.setTimeStamp(time);

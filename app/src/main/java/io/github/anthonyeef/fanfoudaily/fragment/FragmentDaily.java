@@ -1,5 +1,7 @@
 package io.github.anthonyeef.fanfoudaily.fragment;
 
+import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -10,6 +12,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.android.volley.RequestQueue;
+
 import java.util.ArrayList;
 
 import butterknife.Bind;
@@ -17,14 +21,16 @@ import butterknife.ButterKnife;
 import io.github.anthonyeef.fanfoudaily.R;
 import io.github.anthonyeef.fanfoudaily.adapter.FanfouAdapter;
 import io.github.anthonyeef.fanfoudaily.callbacks.FanfouLoadedListener;
-import io.github.anthonyeef.fanfoudaily.logging.LogUtils;
+import io.github.anthonyeef.fanfoudaily.callbacks.RecyclerItemClickListener;
+import io.github.anthonyeef.fanfoudaily.extras.FanfouUtils;
 import io.github.anthonyeef.fanfoudaily.model.Fanfou;
-import io.github.anthonyeef.fanfoudaily.task.TaskLoadFanfouDaily;
+import io.github.anthonyeef.fanfoudaily.network.VolleySingleton;
+import io.github.anthonyeef.fanfoudaily.ui.UIStatus;
 
 /**
  * Created by anthonyeef on 10/14/15.
  */
-public class FragmentDaily extends Fragment implements FanfouLoadedListener, SwipeRefreshLayout.OnRefreshListener {
+public class FragmentDaily extends Fragment /*implements FanfouLoadedListener SwipeRefreshLayout.OnRefreshListener*/ {
     private static final String DAILY_FANFOU = "daily_fanfou";
 
     private ArrayList<Fanfou> listFanfous = new ArrayList<>();
@@ -47,27 +53,27 @@ public class FragmentDaily extends Fragment implements FanfouLoadedListener, Swi
                 R.layout.fragment_item_list, container, false);
         ButterKnife.bind(this, view);
 
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(mRecyclerView.getContext()));
+        mRecyclerView.addOnItemTouchListener(
+                new RecyclerItemClickListener(getContext(), new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(View view, int position) {
+                        Intent intent = new Intent(getActivity(), UIStatus.class);
+                        Fanfou feed = listFanfous.get(position);
+                        intent.putExtra("feed", feed);
+                        startActivity(intent);
+                    }
+                })
+        );
+        mRecyclerView.setLayoutManager(
+                new LinearLayoutManager(mRecyclerView.getContext()));
         mFanfouAdapter = new FanfouAdapter(getContext());
-//            @Override
-//            public void onItemClick(View v, int position) {
-//                Toast.makeText(getContext(), "You click item:" + position, Toast.LENGTH_LONG).show();
-//                Fanfou fanfou = listFanfous.get(position);
-//                Intent intent = new Intent(getActivity(), UIStatus.class);
-//                intent.putExtra("fanfou", fanfou);
-
-//                startActivity(intent);
-//                getActivity().startActivity(intent);
-
-//            }
-//        });
         mRecyclerView.setAdapter(mFanfouAdapter);
 
         if (savedInstanceState != null) {
             listFanfous = savedInstanceState.getParcelableArrayList(DAILY_FANFOU);
         } else {
             if (listFanfous.isEmpty()) {
-                new TaskLoadFanfouDaily(this).execute();
+                new TaskLoadFanfouDaily().execute();
                 mFanfouAdapter.setFanfous(listFanfous);
             }
         }
@@ -81,20 +87,48 @@ public class FragmentDaily extends Fragment implements FanfouLoadedListener, Swi
         outState.putParcelableArrayList(DAILY_FANFOU, listFanfous);
     }
 
-    @Override
-    public void onFanfouLoaded(ArrayList<Fanfou> listFanfous) {
+//    @Override
+//    public void onFanfouLoaded(ArrayList<Fanfou> listFanfous) {
+//
+//        if (mSwipeRefreshLayout.isRefreshing()) {
+//            mSwipeRefreshLayout.setRefreshing(false);
+//        }
+//        mFanfouAdapter.setFanfous(listFanfous);
+//    }
 
-        if (mSwipeRefreshLayout.isRefreshing()) {
-            mSwipeRefreshLayout.setRefreshing(false);
+//    @Override
+//    public void onRefresh() {
+//        LogUtils.t(getActivity(), "onRefresh");
+//        mSwipeRefreshLayout.setRefreshing(true);
+//        new TaskLoadFanfouDaily(this).execute();
+//    }
+//
+    public class TaskLoadFanfouDaily extends AsyncTask<Void, Void, Integer> {
+        private FanfouLoadedListener mListener;
+        private VolleySingleton mVolleySingleton;
+        private RequestQueue mRequestQueue;
+
+        public TaskLoadFanfouDaily(/*FanfouLoadedListener listener*/) {
+//            this.mListener = listener;
+            mVolleySingleton = VolleySingleton.getInstance();
+
+            mRequestQueue = mVolleySingleton.getRequestQueue();
         }
-        mFanfouAdapter.setFanfous(listFanfous);
-    }
 
-    @Override
-    public void onRefresh() {
-        LogUtils.t(getActivity(), "onRefresh");
-        mSwipeRefreshLayout.setRefreshing(true);
-        new TaskLoadFanfouDaily(this).execute();
+        @Override
+        protected Integer doInBackground(Void... params) {
+            Integer result = 0;
+            listFanfous = FanfouUtils.loadFanfouDailyFeeds(mRequestQueue);
+            result = 1;
+            return result;
+        }
+
+        @Override
+        protected void onPostExecute(Integer result) {
+            if (result == 1) {
+                mFanfouAdapter.setFanfous(listFanfous);
+            }
+        }
     }
 
 }
