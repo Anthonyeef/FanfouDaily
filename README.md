@@ -21,9 +21,9 @@ Still under building.
 - 全面使用 butterknife 精简代码 :beers:
 - 复用 FragmentDaily 和 FragmentWeekly，精简代码
 - 支持饭否帐号登录，增加收藏功能
-- 点击 Feed 后能够进入 FragmentDetail
-- 自定義 `TextView` 中 Feed 的 CSS 樣式 
-- 自定義字體
+- 点击 Feed 后能够进入 FragmentDetail :beers: 没有增加 `Fragment`，直接用了一个简单的`UIStatus` 实现比较容易XD
+- 自定义 `TextView` 中 Feed 的 CSS 樣式 
+- 自定义字体
 - 嘗試增加 `animation`
 
 
