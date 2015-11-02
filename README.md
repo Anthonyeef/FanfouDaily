@@ -22,6 +22,7 @@ Still under building.
 - 复用 FragmentDaily 和 FragmentWeekly，精简代码
 - 支持饭否帐号登录，增加收藏功能
 - 点击 Feed 后能够进入 FragmentDetail :beers: 没有增加 `Fragment`，直接用了一个简单的`UIStatus` 实现比较容易XD
+- `Hometimeline` 中隐藏了图片，如果当前 feed 有图，右上角有 label 标明，点击后进入`UIStatus` 中查看图
 - 自定义 `TextView` 中 Feed 的 CSS 樣式 
 - 自定义字体
 - 嘗試增加 `animation`
