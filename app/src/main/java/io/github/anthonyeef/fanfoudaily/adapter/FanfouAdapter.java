@@ -6,7 +6,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
@@ -57,7 +56,7 @@ public class FanfouAdapter extends RecyclerView.Adapter<FanfouAdapter.FanfouView
         @Bind(R.id.name) TextView vScreenName;
         @Bind(R.id.timestamp) TextView vTimeStamp;
         @Bind(R.id.status) TextView vStatus;
-        @Bind(R.id.feedImage) ImageView vImage;
+//        @Bind(R.id.feedImage) ImageView vImage;
 //        @Bind(R.id.imageflag) ImageView vImageflag;
 
         Fanfou mFanfou;
@@ -84,7 +83,7 @@ public class FanfouAdapter extends RecyclerView.Adapter<FanfouAdapter.FanfouView
         fanfouViewHolder.vStatus.setText(current.getStatus());
         fanfouViewHolder.mFanfou = current;
 
-        fanfouViewHolder.vImage.setVisibility(View.GONE);
+//        fanfouViewHolder.vImage.setVisibility(View.GONE);
 //        if (current.getImageUrl() != null) {
 //            fanfouViewHolder.vImageflag.setVisibility(View.VISIBLE);
        /* } else { */
