@@ -87,15 +87,6 @@ public class FanfouAdapter extends RecyclerView.Adapter<FanfouAdapter.FanfouView
         if (current.getImageUrl().equals("")) {
             fanfouViewHolder.vImageflag.setVisibility(View.GONE);
         }
-//        fanfouViewHolder.vImage.setVisibility(View.GONE);
-//        if (current.getImageUrl() != null) {
-//            fanfouViewHolder.vImageflag.setVisibility(View.VISIBLE);
-       /* } else { */
-//            Context context1 = fanfouViewHolder.vImage.getContext();
-//            fanfouViewHolder.vImageflag.setVisibility(View.GONE);
-//            Picasso.with(context1).load(R.drawable.ic_photo_24dp)
-//                    .into(fanfouViewHolder.vImageflag);
-//        }
     }
 
     @Override

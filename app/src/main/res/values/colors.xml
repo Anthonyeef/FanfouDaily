@@ -6,4 +6,9 @@
 
     <color name="feed_bg">#EEEEEE</color>
     <color name="white">#ffffff</color>
+
+    <color name="red">#990000</color>
+    <color name="orange">#FF9900</color>
+    <color name="blue">#000099</color>
+    <color name="green">#009900</color>
 </resources>

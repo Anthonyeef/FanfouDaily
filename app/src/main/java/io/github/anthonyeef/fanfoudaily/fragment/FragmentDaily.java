@@ -3,6 +3,7 @@ package io.github.anthonyeef.fanfoudaily.fragment;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -53,6 +54,27 @@ public class FragmentDaily extends Fragment /*implements FanfouLoadedListener Sw
                 R.layout.fragment_item_list, container, false);
         ButterKnife.bind(this, view);
 
+        mSwipeRefreshLayout.setColorSchemeResources(R.color.orange, R.color.green, R.color.red, R.color.blue);
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        new TaskLoadFanfouDaily().execute();
+                        mFanfouAdapter.setFanfous(listFanfous);
+                        mSwipeRefreshLayout.setRefreshing(false);
+                    }
+                }, 2500);
+            }
+        });
+        mSwipeRefreshLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                mSwipeRefreshLayout.setRefreshing(true);
+            }
+        });
+
         mRecyclerView.addOnItemTouchListener(
                 new RecyclerItemClickListener(getContext(), new RecyclerItemClickListener.OnItemClickListener() {
                     @Override
@@ -73,6 +95,7 @@ public class FragmentDaily extends Fragment /*implements FanfouLoadedListener Sw
             listFanfous = savedInstanceState.getParcelableArrayList(DAILY_FANFOU);
         } else {
             if (listFanfous.isEmpty()) {
+                mSwipeRefreshLayout.setRefreshing(true);
                 new TaskLoadFanfouDaily().execute();
                 mFanfouAdapter.setFanfous(listFanfous);
             }
@@ -87,22 +110,6 @@ public class FragmentDaily extends Fragment /*implements FanfouLoadedListener Sw
         outState.putParcelableArrayList(DAILY_FANFOU, listFanfous);
     }
 
-//    @Override
-//    public void onFanfouLoaded(ArrayList<Fanfou> listFanfous) {
-//
-//        if (mSwipeRefreshLayout.isRefreshing()) {
-//            mSwipeRefreshLayout.setRefreshing(false);
-//        }
-//        mFanfouAdapter.setFanfous(listFanfous);
-//    }
-
-//    @Override
-//    public void onRefresh() {
-//        LogUtils.t(getActivity(), "onRefresh");
-//        mSwipeRefreshLayout.setRefreshing(true);
-//        new TaskLoadFanfouDaily(this).execute();
-//    }
-//
     public class TaskLoadFanfouDaily extends AsyncTask<Void, Void, Integer> {
         private FanfouLoadedListener mListener;
         private VolleySingleton mVolleySingleton;
@@ -114,19 +121,28 @@ public class FragmentDaily extends Fragment /*implements FanfouLoadedListener Sw
 
             mRequestQueue = mVolleySingleton.getRequestQueue();
         }
+    @Override
+    protected void onPreExecute() {
+        mSwipeRefreshLayout.setRefreshing(true);
+        listFanfous.clear();
+    }
 
-        @Override
-        protected Integer doInBackground(Void... params) {
-            Integer result = 0;
-            listFanfous = FanfouUtils.loadFanfouDailyFeeds(mRequestQueue);
-            result = 1;
-            return result;
-        }
+    @Override
+    protected Integer doInBackground(Void... params) {
+        Integer result = 0;
+        listFanfous.clear();
+        listFanfous = FanfouUtils.loadFanfouDailyFeeds(mRequestQueue);
+        result = 1;
+        return result;
+    }
 
         @Override
         protected void onPostExecute(Integer result) {
             if (result == 1) {
                 mFanfouAdapter.setFanfous(listFanfous);
+                if (mSwipeRefreshLayout.isRefreshing()) {
+                    mSwipeRefreshLayout.setRefreshing(false);
+                }
             }
         }
     }
