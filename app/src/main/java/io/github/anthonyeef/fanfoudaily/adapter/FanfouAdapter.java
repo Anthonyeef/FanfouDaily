@@ -83,9 +83,11 @@ public class FanfouAdapter extends RecyclerView.Adapter<FanfouAdapter.FanfouView
         fanfouViewHolder.vTimeStamp.setText(current.getTimeStamp());
         fanfouViewHolder.vStatus.setText(current.getStatus());
         fanfouViewHolder.mFanfou = current;
+        fanfouViewHolder.vImageflag.setImageResource(R.drawable.ic_photo_24dp);
 
         if (current.getImageUrl().equals("")) {
-            fanfouViewHolder.vImageflag.setVisibility(View.GONE);
+//            fanfouViewHolder.vImageflag.setVisibility(View.GONE);
+            fanfouViewHolder.vImageflag.setImageDrawable(null);
         }
     }
 

@@ -48,6 +48,7 @@
                 <ImageView
                     android:id="@+id/imageflag"
                     android:src="@drawable/ic_photo_24dp"
+                    android:visibility="visible"
                     android:layout_alignParentRight="true"
                     android:layout_width="24dp"
                     android:layout_height="24dp"/>
