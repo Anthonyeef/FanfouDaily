@@ -9,9 +9,9 @@ Still under building.
 
 ### Screenshot
 
-<img src="screenshots/IMG_2015-11-02-shot-1.jpg" width="25%" />
-<img src="screenshots/IMG_2015-11-02-shot-2.jpg" width="25%" />
-<img src="screenshots/IMG_2015-11-02-shot-3.jpg" width="25%" />
+<img src="screenshots/IMG_2015-11-02-shot-1.jpg" width="33%" />
+<img src="screenshots/IMG_2015-11-02-shot-2.jpg" width="33%" />
+<img src="screenshots/IMG_2015-11-02-shot-3.jpg" width="33%" />
 
 
 ### 已完成：
