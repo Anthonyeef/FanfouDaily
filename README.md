@@ -7,6 +7,9 @@ T^T 讲真我觉得我还是要再努力学习。
 
 Still under building.
 
+### Screenshot
+
+<img src="http://7vijxa.com1.z0.glb.clouddn.com/IMG_2015-11-02%2019%3A00%3A33.jpg" width="50%" />
 ### 已完成：
 - 可以从 Api 接口中解析数据并完整呈现
 - 可以在「每日精选」和「每周精选」间切换

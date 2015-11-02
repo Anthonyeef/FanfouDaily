@@ -28,7 +28,6 @@ public class FanfouAdapter extends RecyclerView.Adapter<FanfouAdapter.FanfouView
     private ArrayList<Fanfou> mFanfouList = new ArrayList<>();
     private VolleySingleton mVolleySingleton;
     private LayoutInflater mInflater;
-//    private OnItemTouchListener mOnItemTouchListener;
     private Context mContext;
 
     public FanfouAdapter(Context context) {
@@ -42,9 +41,6 @@ public class FanfouAdapter extends RecyclerView.Adapter<FanfouAdapter.FanfouView
         notifyDataSetChanged();
     }
 
-//    public void setOnItemTouchListener (OnItemTouchListener onItemTouchListener) {
-//        this.mOnItemTouchListener = onItemTouchListener;
-//    }
     @Override
     public int getItemCount() {
         return mFanfouList.size();
@@ -57,7 +53,6 @@ public class FanfouAdapter extends RecyclerView.Adapter<FanfouAdapter.FanfouView
         @Bind(R.id.name) TextView vScreenName;
         @Bind(R.id.timestamp) TextView vTimeStamp;
         @Bind(R.id.status) TextView vStatus;
-//        @Bind(R.id.feedImage) ImageView vImage;
         @Bind(R.id.imageflag) ImageView vImageflag;
 
         Fanfou mFanfou;
@@ -86,7 +81,6 @@ public class FanfouAdapter extends RecyclerView.Adapter<FanfouAdapter.FanfouView
         fanfouViewHolder.vImageflag.setImageResource(R.drawable.ic_photo_24dp);
 
         if (current.getImageUrl().equals("")) {
-//            fanfouViewHolder.vImageflag.setVisibility(View.GONE);
             fanfouViewHolder.vImageflag.setImageDrawable(null);
         }
     }
@@ -95,13 +89,6 @@ public class FanfouAdapter extends RecyclerView.Adapter<FanfouAdapter.FanfouView
     public FanfouViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View itemView = mInflater.inflate(R.layout.fanfou_item, viewGroup, false);
         final FanfouViewHolder holder = new FanfouViewHolder(itemView);
-
-//        itemView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                mOnItemTouchListener.onItemClick(v, holder.getAdapterPosition());
-//            }
-//        });
         return holder;
     }
 

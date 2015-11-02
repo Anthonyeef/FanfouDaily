@@ -68,12 +68,6 @@ public class FragmentDaily extends Fragment /*implements FanfouLoadedListener Sw
                 }, 2500);
             }
         });
-        mSwipeRefreshLayout.post(new Runnable() {
-            @Override
-            public void run() {
-                mSwipeRefreshLayout.setRefreshing(true);
-            }
-        });
 
         mRecyclerView.addOnItemTouchListener(
                 new RecyclerItemClickListener(getContext(), new RecyclerItemClickListener.OnItemClickListener() {
@@ -95,8 +89,14 @@ public class FragmentDaily extends Fragment /*implements FanfouLoadedListener Sw
             listFanfous = savedInstanceState.getParcelableArrayList(DAILY_FANFOU);
         } else {
             if (listFanfous.isEmpty()) {
-                mSwipeRefreshLayout.setRefreshing(true);
-                new TaskLoadFanfouDaily().execute();
+                mSwipeRefreshLayout.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        mSwipeRefreshLayout.setRefreshing(true);
+                        new TaskLoadFanfouDaily().execute();
+                    }
+                });
+//                mSwipeRefreshLayout.setRefreshing(true);
                 mFanfouAdapter.setFanfous(listFanfous);
             }
         }
