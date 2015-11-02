@@ -58,6 +58,7 @@ public class FanfouAdapter extends RecyclerView.Adapter<FanfouAdapter.FanfouView
         @Bind(R.id.timestamp) TextView vTimeStamp;
         @Bind(R.id.status) TextView vStatus;
         @Bind(R.id.feedImage) ImageView vImage;
+//        @Bind(R.id.imageflag) ImageView vImageflag;
 
         Fanfou mFanfou;
         View feed;
@@ -83,15 +84,15 @@ public class FanfouAdapter extends RecyclerView.Adapter<FanfouAdapter.FanfouView
         fanfouViewHolder.vStatus.setText(current.getStatus());
         fanfouViewHolder.mFanfou = current;
 
-        if (current.getImageUrl() == null) {
-            fanfouViewHolder.vImage.setVisibility(View.GONE);
-        } else {
-            Uri image_uri = Uri.parse(current.getImageUrl());
-            Context context1 = fanfouViewHolder.vImage.getContext();
-
-            Picasso.with(context1).load(image_uri)
-                    .into(fanfouViewHolder.vImage);
-        }
+        fanfouViewHolder.vImage.setVisibility(View.GONE);
+//        if (current.getImageUrl() != null) {
+//            fanfouViewHolder.vImageflag.setVisibility(View.VISIBLE);
+       /* } else { */
+//            Context context1 = fanfouViewHolder.vImage.getContext();
+//            fanfouViewHolder.vImageflag.setVisibility(View.GONE);
+//            Picasso.with(context1).load(R.drawable.ic_photo_24dp)
+//                    .into(fanfouViewHolder.vImageflag);
+//        }
     }
 
     @Override
