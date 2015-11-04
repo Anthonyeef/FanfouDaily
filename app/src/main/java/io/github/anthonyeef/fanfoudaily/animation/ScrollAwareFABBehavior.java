@@ -30,7 +30,7 @@ public class ScrollAwareFABBehavior extends FloatingActionButton.Behavior{
                                int dyUnconsumed) {
         if (dyConsunmed > 0 && child.getVisibility() == View.VISIBLE) {
             child.hide();
-        } else if (dyConsunmed < 0 && child.getVisibility() != View.VISIBLE) {
+        } else if (dyConsunmed < 0 && child.getVisibility() != View.VISIBLE ) {
             child.show();
         }
     }
