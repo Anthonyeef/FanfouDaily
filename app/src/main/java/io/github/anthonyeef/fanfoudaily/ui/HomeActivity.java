@@ -73,5 +73,28 @@ public class HomeActivity extends AppCompatActivity {
         adapter.addFragment(new FragmentDaily(), "每日精选");
         adapter.addFragment(new FragmentWeekly(), "每周精选");
         viewPager.setAdapter(adapter);
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                switch (position) {
+                    case 0:
+                        mFloatingActionButton.show();
+                        break;
+                    default:
+                        mFloatingActionButton.hide();
+                        break;
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
     }
 }
