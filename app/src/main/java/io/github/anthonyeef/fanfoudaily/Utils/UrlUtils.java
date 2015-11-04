@@ -1,6 +1,6 @@
 package io.github.anthonyeef.fanfoudaily.Utils;
 
-import io.github.anthonyeef.fanfoudaily.extras.UrlEndpoints;
+import io.github.anthonyeef.fanfoudaily.network.UrlEndpoints;
 
 /**
  * Created by anthonyeef on 10/17/15.

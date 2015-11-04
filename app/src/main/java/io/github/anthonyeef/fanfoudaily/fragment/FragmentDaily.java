@@ -39,6 +39,8 @@ public class FragmentDaily extends Fragment /*implements FanfouLoadedListener Sw
 
     @Bind(R.id.swipeFanfous) SwipeRefreshLayout mSwipeRefreshLayout;
     @Bind(R.id.recyclerview) RecyclerView mRecyclerView;
+//    @Bind(R.id.fab) FloatingActionButton mButton;
+
     public FragmentDaily() {
 
     }
@@ -85,6 +87,8 @@ public class FragmentDaily extends Fragment /*implements FanfouLoadedListener Sw
         mFanfouAdapter = new FanfouAdapter(getContext());
         mRecyclerView.setAdapter(mFanfouAdapter);
 
+
+
         if (savedInstanceState != null) {
             listFanfous = savedInstanceState.getParcelableArrayList(DAILY_FANFOU);
         } else {
@@ -100,6 +104,15 @@ public class FragmentDaily extends Fragment /*implements FanfouLoadedListener Sw
                 mFanfouAdapter.setFanfous(listFanfous);
             }
         }
+
+
+        /*setup fab*/
+//        mButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Snackbar snackbar;
+//            }
+//        });
         return view;
     }
 

@@ -1,4 +1,4 @@
-package io.github.anthonyeef.fanfoudaily.extras;
+package io.github.anthonyeef.fanfoudaily.network;
 
 /**
  * Created by anthonyeef on 10/16/15.
@@ -10,6 +10,6 @@ public class UrlEndpoints {
     public static final String URL_WEEKLY = ".weekly";
     public static final String URL_END = ".json";
 
-    public static final String URL_TEMP = "2015-11-02";
-    public static final String URL_TEMP2 = "2015-10-26";
+    public static final String URL_TEMP = "2015-11-03";
+    public static final String URL_TEMP2 = "2015-11-02";
 }
