@@ -21,7 +21,6 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import io.github.anthonyeef.fanfoudaily.R;
 import io.github.anthonyeef.fanfoudaily.adapter.FanfouAdapter;
-import io.github.anthonyeef.fanfoudaily.callbacks.FanfouLoadedListener;
 import io.github.anthonyeef.fanfoudaily.callbacks.RecyclerItemClickListener;
 import io.github.anthonyeef.fanfoudaily.extras.FanfouUtils;
 import io.github.anthonyeef.fanfoudaily.model.Fanfou;
@@ -39,7 +38,6 @@ public class FragmentDaily extends Fragment /*implements FanfouLoadedListener Sw
 
     @Bind(R.id.swipeFanfous) SwipeRefreshLayout mSwipeRefreshLayout;
     @Bind(R.id.recyclerview) RecyclerView mRecyclerView;
-//    @Bind(R.id.fab) FloatingActionButton mButton;
 
     public FragmentDaily() {
 
@@ -100,19 +98,10 @@ public class FragmentDaily extends Fragment /*implements FanfouLoadedListener Sw
                         new TaskLoadFanfouDaily().execute();
                     }
                 });
-//                mSwipeRefreshLayout.setRefreshing(true);
                 mFanfouAdapter.setFanfous(listFanfous);
             }
         }
 
-
-        /*setup fab*/
-//        mButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Snackbar snackbar;
-//            }
-//        });
         return view;
     }
 
@@ -124,12 +113,10 @@ public class FragmentDaily extends Fragment /*implements FanfouLoadedListener Sw
     }
 
     public class TaskLoadFanfouDaily extends AsyncTask<Void, Void, Integer> {
-        private FanfouLoadedListener mListener;
         private VolleySingleton mVolleySingleton;
         private RequestQueue mRequestQueue;
 
         public TaskLoadFanfouDaily(/*FanfouLoadedListener listener*/) {
-//            this.mListener = listener;
             mVolleySingleton = VolleySingleton.getInstance();
 
             mRequestQueue = mVolleySingleton.getRequestQueue();
