@@ -34,6 +34,8 @@ Still under building.
 - 自定义 `TextView` 中 Feed 的 CSS 樣式 
 - 自定义字体
 - 嘗試增加 `animation`
+- 增加 `FAB` :beers:
+- 增加 `DatePickerDialog` :beers:
 
 
 ## Some thing I would like to write it here:
