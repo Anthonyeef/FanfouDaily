@@ -87,7 +87,7 @@ public class FanfouAdapter extends RecyclerView.Adapter<FanfouAdapter.FanfouView
 
     @Override
     public FanfouViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        View itemView = mInflater.inflate(R.layout.fanfou_item, viewGroup, false);
+        View itemView = mInflater.inflate(R.layout.card_list_item, viewGroup, false);
         final FanfouViewHolder holder = new FanfouViewHolder(itemView);
         return holder;
     }

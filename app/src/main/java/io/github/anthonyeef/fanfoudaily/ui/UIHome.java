@@ -19,7 +19,7 @@ import io.github.anthonyeef.fanfoudaily.fragment.FragmentDaily;
 import io.github.anthonyeef.fanfoudaily.fragment.FragmentDatePicker;
 import io.github.anthonyeef.fanfoudaily.fragment.FragmentWeekly;
 
-public class HomeActivity extends AppCompatActivity {
+public class UIHome extends AppCompatActivity {
 
     @Bind(R.id.viewPager) ViewPager viewPager;
     @Bind(R.id.tabs) TabLayout tabLayout;
