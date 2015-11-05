@@ -5,4 +5,5 @@
     <string name="name">Screen Name</string>
     <string name="timestamp">Timestamp</string>
     <string name="scrollawarefab">io.github.anthonyeef.fanfoudaily.animation.ScrollAwareFABBehavior</string>
+    <string name="title_activity_test">TestActivity</string>
 </resources>
