@@ -1,5 +1,7 @@
 package io.github.anthonyeef.fanfoudaily.ui;
 
+import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
@@ -10,13 +12,16 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.DatePicker;
+import android.widget.Toast;
+
+import java.util.Calendar;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import io.github.anthonyeef.fanfoudaily.R;
 import io.github.anthonyeef.fanfoudaily.adapter.PagerAdapter;
 import io.github.anthonyeef.fanfoudaily.fragment.FragmentDaily;
-import io.github.anthonyeef.fanfoudaily.fragment.FragmentDatePicker;
 import io.github.anthonyeef.fanfoudaily.fragment.FragmentWeekly;
 
 public class UIHome extends AppCompatActivity {
@@ -96,5 +101,25 @@ public class UIHome extends AppCompatActivity {
 
             }
         });
+    }
+
+    public static class FragmentDatePicker extends DialogFragment implements DatePickerDialog.OnDateSetListener {
+
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+
+            final Calendar cal = Calendar.getInstance();
+            int year = cal.get(Calendar.YEAR);
+            int month = cal.get(Calendar.MONTH);
+            int day = cal.get(Calendar.DAY_OF_MONTH);
+
+            return new DatePickerDialog(getActivity(), this, year, month, day);
+        }
+
+        public void onDateSet(DatePicker view, int year, int month, int day) {
+            Toast.makeText(getContext(), "You just select" + year + month + day, Toast.LENGTH_SHORT).show();
+        }
+
+
     }
 }
