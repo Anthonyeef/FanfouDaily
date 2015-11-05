@@ -68,7 +68,7 @@ public class HomeActivity extends AppCompatActivity {
         DialogFragment newFragment = new FragmentDatePicker();
         newFragment.show(getSupportFragmentManager(), "datePicker");
     }
-    public void setupViewPager(ViewPager viewPager) {
+    public void setupViewPager(final ViewPager viewPager) {
         PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new FragmentDaily(), "每日精选");
         adapter.addFragment(new FragmentWeekly(), "每周精选");
@@ -86,7 +86,6 @@ public class HomeActivity extends AppCompatActivity {
                         mFloatingActionButton.show();
                         break;
                     default:
-                        mFloatingActionButton.setVisibility(View.GONE);
                         mFloatingActionButton.hide();
                         break;
                 }

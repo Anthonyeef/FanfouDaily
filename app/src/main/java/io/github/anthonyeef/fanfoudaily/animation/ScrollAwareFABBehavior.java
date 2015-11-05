@@ -10,7 +10,7 @@ import android.view.View;
 /**
  * Created by anthonyeef on 11/4/15.
  */
-public class ScrollAwareFABBehavior extends CoordinatorLayout.Behavior<FloatingActionButton>{
+public class ScrollAwareFABBehavior extends FloatingActionButton.Behavior{
 
     public ScrollAwareFABBehavior(Context context, AttributeSet attrs) {
         super();
