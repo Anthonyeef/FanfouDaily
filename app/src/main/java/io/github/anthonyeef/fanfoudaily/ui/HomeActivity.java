@@ -86,6 +86,7 @@ public class HomeActivity extends AppCompatActivity {
                         mFloatingActionButton.show();
                         break;
                     default:
+                        mFloatingActionButton.setVisibility(View.GONE);
                         mFloatingActionButton.hide();
                         break;
                 }

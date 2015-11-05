@@ -44,7 +44,6 @@
         android:onClick="showDatePickerDialog"
         app:layout_anchor="@id/viewPager"
         app:layout_anchorGravity="bottom|right|end"
-        app:layout_behavior="@string/scrollawarefab"
         app:backgroundTint="@color/colorPrimary"/>
 
 </android.support.design.widget.CoordinatorLayout>
