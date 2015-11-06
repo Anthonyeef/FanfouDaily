@@ -5,6 +5,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,18 +15,21 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.android.volley.RequestQueue;
+import com.android.volley.VolleyError;
 
 import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import io.github.anthonyeef.fanfoudaily.R;
+import io.github.anthonyeef.fanfoudaily.Utils.HttpUtils;
+import io.github.anthonyeef.fanfoudaily.Utils.LogUtils;
 import io.github.anthonyeef.fanfoudaily.adapter.FanfouAdapter;
 import io.github.anthonyeef.fanfoudaily.callbacks.RecyclerItemClickListener;
 import io.github.anthonyeef.fanfoudaily.extras.FanfouUtils;
 import io.github.anthonyeef.fanfoudaily.model.Fanfou;
-import io.github.anthonyeef.fanfoudaily.volley.VolleySingleton;
 import io.github.anthonyeef.fanfoudaily.ui.UIStatus;
+import io.github.anthonyeef.fanfoudaily.volley.VolleySingleton;
 
 /**
  * Created by anthonyeef on 10/14/15.
@@ -48,7 +52,7 @@ public class FragmentDaily extends Fragment {
     public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(
+        final View view = inflater.inflate(
                 R.layout.fragment_item_list, container, false);
         ButterKnife.bind(this, view);
 
@@ -62,8 +66,14 @@ public class FragmentDaily extends Fragment {
                 mSwipeRefreshLayout.post(new Runnable() {
                     @Override
                     public void run() {
-                        mSwipeRefreshLayout.setRefreshing(true);
-                        new TaskLoadFanfouDaily().execute();
+                        if (HttpUtils.isNetworkConnected(getContext())) {
+                            fetchData();
+                        } else {
+                            Snackbar.make(view, "Hey you don't have internet yet.", Snackbar.LENGTH_LONG).show();
+                            if (mSwipeRefreshLayout.isRefreshing()) {
+                                mSwipeRefreshLayout.setRefreshing(false);
+                            }
+                        }
                     }
                 });
                 mFanfouAdapter.setFanfous(listFanfous);
@@ -79,16 +89,22 @@ public class FragmentDaily extends Fragment {
     }
 
     private void setupSwipeRefreshLayout() {
-        mSwipeRefreshLayout.setColorSchemeResources(R.color.orange, R.color.green, R.color.red, R.color.blue);
+        mSwipeRefreshLayout.setColorSchemeResources(R.color.orange,
+                R.color.green, R.color.red, R.color.blue);
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        new TaskLoadFanfouDaily().execute();
-                        mFanfouAdapter.setFanfous(listFanfous);
-                        mSwipeRefreshLayout.setRefreshing(false);
+                        if(HttpUtils.isNetworkConnected(getContext())) {
+                            fetchData();
+                        } else {
+                            Snackbar.make(getView(), "Hey you don't have internet yet.", Snackbar.LENGTH_LONG).show();
+                            if (mSwipeRefreshLayout.isRefreshing()) {
+                                mSwipeRefreshLayout.setRefreshing(false);
+                            }
+                        }
                     }
                 }, 2500);
             }
@@ -98,7 +114,8 @@ public class FragmentDaily extends Fragment {
     private void setupRecyclerView() {
 
         mRecyclerView.addOnItemTouchListener(
-               new RecyclerItemClickListener(getContext(), new RecyclerItemClickListener.OnItemClickListener() {
+               new RecyclerItemClickListener(getContext(),
+                       new RecyclerItemClickListener.OnItemClickListener() {
                    @Override
                    public void onItemClick(View view, int position) {
                        startActivity(position);
@@ -112,6 +129,7 @@ public class FragmentDaily extends Fragment {
     }
 
     public class TaskLoadFanfouDaily extends AsyncTask<Void, Void, Integer> {
+
         private VolleySingleton mVolleySingleton;
         private RequestQueue mRequestQueue;
 
@@ -130,7 +148,12 @@ public class FragmentDaily extends Fragment {
         protected Integer doInBackground(Void... params) {
             Integer result = 0;
             listFanfous.clear();
-            listFanfous = FanfouUtils.loadFanfouDailyFeeds(mRequestQueue);
+            try {
+                listFanfous = FanfouUtils.loadFanfouDailyFeeds(mRequestQueue);
+                throw new VolleyError("Ya Volley not working");
+            } catch (VolleyError e) {
+                LogUtils.m("Something happend:"+ e );
+            }
             result = 1;
             return result;
         }
@@ -151,5 +174,11 @@ public class FragmentDaily extends Fragment {
         Fanfou feed = listFanfous.get(position);
         intent.putExtra("feed", feed);
         startActivity(intent);
+    }
+
+    private void fetchData() {
+        mSwipeRefreshLayout.setRefreshing(true);
+        new TaskLoadFanfouDaily().execute();
+        mFanfouAdapter.setFanfous(listFanfous);
     }
 }

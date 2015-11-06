@@ -1,7 +1,5 @@
 package io.github.anthonyeef.fanfoudaily.extras;
 
-import android.util.Log;
-
 import com.android.volley.RequestQueue;
 
 import org.json.JSONObject;
@@ -9,9 +7,9 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import io.github.anthonyeef.fanfoudaily.Utils.UrlUtils;
+import io.github.anthonyeef.fanfoudaily.model.Fanfou;
 import io.github.anthonyeef.fanfoudaily.volley.Parser;
 import io.github.anthonyeef.fanfoudaily.volley.Requestor;
-import io.github.anthonyeef.fanfoudaily.model.Fanfou;
 
 /**
  * Created by anthonyeef on 10/16/15.
@@ -19,8 +17,8 @@ import io.github.anthonyeef.fanfoudaily.model.Fanfou;
 public class FanfouUtils {
     public static ArrayList<Fanfou> loadFanfouDailyFeeds(RequestQueue requestQueue) {
         JSONObject response = Requestor.requestJSON(requestQueue, UrlUtils.getRequestUrlFanfouDaily());
-        Log.v("Getting response from", UrlUtils.getRequestUrlFanfouDaily());
-        Log.v("Loading", response.toString());
+//        Log.v("Getting response from", UrlUtils.getRequestUrlFanfouDaily());
+//        Log.v("Loading", response.toString());
         ArrayList<Fanfou> fanfous = Parser.parseFanfouJSON(response);
 
         return fanfous;
@@ -28,8 +26,8 @@ public class FanfouUtils {
 
     public static ArrayList<Fanfou> loadFanfouWeeklyFeeds(RequestQueue requestQueue) {
         JSONObject response = Requestor.requestJSON(requestQueue, UrlUtils.getRequestUrlFanfouWeekly());
-        Log.v("Getting response from", UrlUtils.getRequestUrlFanfouWeekly());
-        Log.v("Loading", response.toString());
+//        Log.v("Getting response from", UrlUtils.getRequestUrlFanfouWeekly());
+//        Log.v("Loading", response.toString());
         ArrayList<Fanfou> fanfous = Parser.parseFanfouJSON(response);
 
         return fanfous;
