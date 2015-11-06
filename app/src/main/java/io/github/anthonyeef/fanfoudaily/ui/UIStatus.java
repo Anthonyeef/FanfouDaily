@@ -6,9 +6,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import butterknife.Bind;
@@ -28,6 +31,7 @@ public class UIStatus extends AppCompatActivity{
     @Bind(R.id.timestamp1) TextView timestamp1;
     @Bind(R.id.status1) TextView status1;
     @Bind(R.id.image1) ImageView image1;
+    @Bind(R.id.imageprogress) ProgressBar mProgressBar;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -38,6 +42,7 @@ public class UIStatus extends AppCompatActivity{
         setContentView(R.layout.activity_status);
         ButterKnife.bind(this);
         setSupportActionBar(mToolbar);
+        mProgressBar.setVisibility(View.VISIBLE);
 
         Fanfou feed = (Fanfou) intent.getParcelableExtra("feed");
 
@@ -45,9 +50,19 @@ public class UIStatus extends AppCompatActivity{
         timestamp1.setText(feed.getTimeStamp());
         status1.setText(feed.getStatus());
 
-        Picasso.with(this).load(feed.getAvatarUrl()).into(avatar1);
+        Picasso.with(this).load(feed.getAvatarUrl())
+                .into(avatar1);
         if (!feed.getImageUrl().equals("")) {
-            Picasso.with(this).load(feed.getImageUrl()).into(image1);
+            Picasso.with(this).load(feed.getImageUrl()).into(image1, new ImageLoadedCallback(mProgressBar) {
+                @Override
+                public void onSuccess() {
+                    if (this.mProgressBar != null) {
+                        mProgressBar.setVisibility(View.GONE);
+                    }
+                }
+            });
+        } else {
+            mProgressBar.setVisibility(View.GONE);
         }
     }
 
@@ -65,6 +80,24 @@ public class UIStatus extends AppCompatActivity{
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private class ImageLoadedCallback implements Callback {
+        ProgressBar mProgressBar;
+
+        public ImageLoadedCallback(ProgressBar progressBar) {
+            mProgressBar = progressBar;
+        }
+
+        @Override
+        public void onSuccess() {
+
+        }
+
+        @Override
+        public void onError() {
+
+        }
     }
 
 }
