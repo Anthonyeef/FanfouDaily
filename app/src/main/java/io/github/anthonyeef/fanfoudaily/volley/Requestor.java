@@ -1,4 +1,4 @@
-package io.github.anthonyeef.fanfoudaily.json;
+package io.github.anthonyeef.fanfoudaily.volley;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -11,7 +11,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
-import io.github.anthonyeef.fanfoudaily.logging.LogUtils;
+import io.github.anthonyeef.fanfoudaily.Utils.LogUtils;
 
 /**
  * Created by anthonyeef on 10/16/15.

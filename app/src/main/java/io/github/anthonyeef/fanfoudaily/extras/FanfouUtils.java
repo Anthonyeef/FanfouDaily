@@ -9,8 +9,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import io.github.anthonyeef.fanfoudaily.Utils.UrlUtils;
-import io.github.anthonyeef.fanfoudaily.json.Parser;
-import io.github.anthonyeef.fanfoudaily.json.Requestor;
+import io.github.anthonyeef.fanfoudaily.volley.Parser;
+import io.github.anthonyeef.fanfoudaily.volley.Requestor;
 import io.github.anthonyeef.fanfoudaily.model.Fanfou;
 
 /**

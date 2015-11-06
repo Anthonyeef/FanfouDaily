@@ -1,24 +1,24 @@
 package io.github.anthonyeef.fanfoudaily.Utils;
 
-import io.github.anthonyeef.fanfoudaily.network.UrlEndpoints;
+import io.github.anthonyeef.fanfoudaily.extras.Constants;
 
 /**
  * Created by anthonyeef on 10/17/15.
  */
 public class UrlUtils {
     public static String getRequestUrlFanfouDaily() {
-        return UrlEndpoints.URL_BASE
-                + UrlEndpoints.URL_JSON
-                + UrlEndpoints.URL_TEMP
-                + UrlEndpoints.URL_DAILY
-                + UrlEndpoints.URL_END;
+        return Constants.URL_BASE
+                + Constants.URL_JSON
+                + Constants.URL_TEMP
+                + Constants.URL_DAILY
+                + Constants.URL_END;
     }
 
     public static String getRequestUrlFanfouWeekly() {
-        return UrlEndpoints.URL_BASE
-                + UrlEndpoints.URL_JSON
-                + UrlEndpoints.URL_TEMP2
-                + UrlEndpoints.URL_WEEKLY
-                + UrlEndpoints.URL_END;
+        return Constants.URL_BASE
+                + Constants.URL_JSON
+                + Constants.URL_TEMP2
+                + Constants.URL_WEEKLY
+                + Constants.URL_END;
     }
 }

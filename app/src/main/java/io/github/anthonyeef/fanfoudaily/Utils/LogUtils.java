@@ -1,4 +1,4 @@
-package io.github.anthonyeef.fanfoudaily.logging;
+package io.github.anthonyeef.fanfoudaily.Utils;
 
 import android.content.Context;
 import android.util.Log;

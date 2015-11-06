@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import io.github.anthonyeef.fanfoudaily.callbacks.FanfouLoadedListener;
 import io.github.anthonyeef.fanfoudaily.extras.FanfouUtils;
 import io.github.anthonyeef.fanfoudaily.model.Fanfou;
-import io.github.anthonyeef.fanfoudaily.network.VolleySingleton;
+import io.github.anthonyeef.fanfoudaily.volley.VolleySingleton;
 
 /**
  * Created by anthonyeef on 10/28/15.

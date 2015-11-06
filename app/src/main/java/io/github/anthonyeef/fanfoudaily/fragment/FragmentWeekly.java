@@ -28,7 +28,7 @@ import io.github.anthonyeef.fanfoudaily.adapter.FanfouAdapter;
 import io.github.anthonyeef.fanfoudaily.callbacks.RecyclerItemClickListener;
 import io.github.anthonyeef.fanfoudaily.extras.FanfouUtils;
 import io.github.anthonyeef.fanfoudaily.model.Fanfou;
-import io.github.anthonyeef.fanfoudaily.network.VolleySingleton;
+import io.github.anthonyeef.fanfoudaily.volley.VolleySingleton;
 import io.github.anthonyeef.fanfoudaily.ui.UIStatus;
 
 public class FragmentWeekly extends Fragment {

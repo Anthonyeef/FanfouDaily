@@ -1,4 +1,4 @@
-package io.github.anthonyeef.fanfoudaily.network;
+package io.github.anthonyeef.fanfoudaily.volley;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;

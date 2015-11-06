@@ -18,7 +18,7 @@ import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
 import io.github.anthonyeef.fanfoudaily.R;
 import io.github.anthonyeef.fanfoudaily.model.Fanfou;
-import io.github.anthonyeef.fanfoudaily.network.VolleySingleton;
+import io.github.anthonyeef.fanfoudaily.volley.VolleySingleton;
 
 /**
  * Created by anthonyeef on 10/13/15.
