@@ -30,6 +30,8 @@ Almost there ;)
 - 考虑增加这个[工具](https://github.com/mcxiaoke/gradle-packer-plugin)，用以管理多渠道打包和版本号
 - 多语言支持
 
+### Download
+[GitHub release](https://github.com/Anthonyeef/FanfouDaily/releases/download/0.9/fanfoudaily-release-0.9.0-github.apk)
 
 ## Some thing I would like to write it here:
 - 很感谢 [rex](https://github.com/zhasm) 提供的 Api，才使得这个小项目成为可能。
