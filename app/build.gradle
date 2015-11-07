@@ -1,8 +1,5 @@
 apply plugin: 'com.android.application'
 
-def releaseTime() {
-    return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("UTC"))
-}
 
 android {
     compileSdkVersion 23
@@ -23,21 +20,17 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
 
-            applicationVariants.all { variant ->
-                variant.outputs.each { output ->
-                    def outputFile = output.outputFile
-                    if (outputFile != null && outputFile.name.endsWith('.apk')) {
-                        output.outputFile = file("${output.outputFile.parent}/fanfoudaily" +
-                                "-${variant.buildType.name.toLowerCase()}" +
-                                "-${variant.versionName}" +
-                                "-${variant.flavorName.toLowerCase()}" +
-                                ".apk")
-                    }
                 }
+        signingConfigs {
+            release {
+                storeFile file(System.console().readLine("\n\$ Enter keystore path: "))
+                storePassword new String(System.console().readPassword("\n\$ Enter keystore password: "))
+                keyAlias System.console().readLine("\n\$ Enter key alias: ")
+                keyPassword new String(System.console().readPassword("\n\$ Enter key password: "))
+            }
+        }
             }
 
-        }
-    }
 
     productFlavors {
         github {

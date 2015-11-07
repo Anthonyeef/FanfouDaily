@@ -19,7 +19,7 @@ Almost there ;)
 ### 已完成：
 - 可以从 Api 接口中解析数据并完整呈现
 - 可以在「每日精选」和「每周精选」间切换
-- 可以查看 `2015-10-03` 之后的任意时间的 `每日精选`，以及最新一期的`每周精选`
+- 可以查看 `2015-10-05` 开始的任意时间的 `每日精选`，以及最新一期的`每周精选`
 
 ### TO DO
 - 增加卡片的点击事件
@@ -31,7 +31,9 @@ Almost there ;)
 - 多语言支持
 
 ### Download
-[GitHub release](https://github.com/Anthonyeef/FanfouDaily/releases/download/0.9/fanfoudaily-release-0.9.0-github.apk)
+Still trying to figure out the publishing method.
+
+And currently only support build from source code(using Android Studio).
 
 ## Some thing I would like to write it here:
 - 很感谢 [rex](https://github.com/zhasm) 提供的 Api，才使得这个小项目成为可能。
