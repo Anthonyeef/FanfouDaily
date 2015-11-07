@@ -11,9 +11,9 @@ Almost there ;)
 
 ### Screenshot
 
-<img src="screenshots/IMG_2015-11-02-shot-1.jpg" width="33%" />
-<img src="screenshots/IMG_2015-11-02-shot-2.jpg" width="33%" />
-<img src="screenshots/IMG_2015-11-02-shot-3.jpg" width="33%" />
+<img src="screenshots/Screenshot_1.jpg" width="45%" />
+<img src="screenshots/Screenshot_2.jpg" width="45%" />
+<img src="screenshots/Screenshot_3.jpg" width="45%" />
 
 
 ### 已完成：
