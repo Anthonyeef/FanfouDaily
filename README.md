@@ -28,7 +28,7 @@ Almost there ;)
 - 夜间模式
 - 「每周精选」的 `Fragment` 底部增加 footer，浏览到最底部后可以自动加载上一期「每周精选」
 - 考虑增加这个[工具](https://github.com/mcxiaoke/gradle-packer-plugin)，用以管理多渠道打包和版本号
-
+- 多语言支持
 
 
 ## Some thing I would like to write it here:

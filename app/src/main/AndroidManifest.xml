@@ -5,6 +5,10 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
+    <!--For UMENG and Fir-->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
     <application
         android:allowBackup="true"
         android:name=".controller.AppController"
@@ -28,4 +32,15 @@
             android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
+    <meta-data
+        android:name="UMENG_APPKEY"
+        android:value="563df6d767e58e5b5b0006f1"/>
+
+    <meta-data
+        android:name="UMENG_CHANNEL"
+        android:value="${UMENG_CHANNEL_VALUE}"/>
+
+    <meta-data
+        android:name="BUG_HD_SDK_GENERAL_KEY"
+        android:value="06f7da177991dd7317619dc10d9a5e27"/>
 </manifest>

@@ -1,5 +1,9 @@
 apply plugin: 'com.android.application'
 
+def releaseTime() {
+    return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("UTC"))
+}
+
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.1"
@@ -9,13 +13,47 @@ android {
         minSdkVersion 14
         targetSdkVersion 23
         versionCode 1
-        versionName "1.0"
+        versionName "0.9.0"
+
+        manifestPlaceholders = [UMENG_CHANNEL_VALUE: "GitHub"]
         multiDexEnabled true
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            applicationVariants.all { variant ->
+                variant.outputs.each { output ->
+                    def outputFile = output.outputFile
+                    if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                        output.outputFile = file("${output.outputFile.parent}/fanfoudaily" +
+                                "-${variant.buildType.name.toLowerCase()}" +
+                                "-${variant.versionName}" +
+                                "-${variant.flavorName.toLowerCase()}" +
+                                ".apk")
+                    }
+                }
+            }
+
+        }
+    }
+
+    productFlavors {
+        github {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "GitHub"]
+        }
+
+        fir {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "FIR"]
+        }
+
+        google {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "Google"]
+        }
+
+        wandoujia {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "Wandoujia"]
         }
     }
 }
@@ -34,4 +72,7 @@ dependencies {
     compile 'com.mcxiaoke.volley:library:1.0.18'
     compile 'de.greenrobot:eventbus:2.4.0'
 
+    compile 'com.umeng.analytics:analytics:latest.integration'
+    compile 'im.fir:sdk:latest.integration'
 }
+

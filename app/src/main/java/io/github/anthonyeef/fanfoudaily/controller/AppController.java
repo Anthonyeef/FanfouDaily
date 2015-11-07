@@ -8,6 +8,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 
+import im.fir.sdk.FIR;
 import io.github.anthonyeef.fanfoudaily.model.Date;
 
 /**
@@ -23,6 +24,8 @@ public class AppController extends Application {
 
     @Override
     public void onCreate() {
+
+        FIR.init(this);
         super.onCreate();
         mInstance = this;
     }

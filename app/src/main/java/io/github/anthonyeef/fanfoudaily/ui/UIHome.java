@@ -14,6 +14,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.DatePicker;
 
+import com.umeng.analytics.MobclickAgent;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -35,9 +37,13 @@ public class UIHome extends AppCompatActivity {
 
     FragmentDaily fragmentDaily = new FragmentDaily();
     FragmentWeekly fragmentWeekly = new FragmentWeekly();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        MobclickAgent.updateOnlineConfig(this);
+
         setContentView(R.layout.activity_home);
 
         ButterKnife.bind(this);
@@ -74,6 +80,18 @@ public class UIHome extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        MobclickAgent.onResume(this);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        MobclickAgent.onPause(this);
+    }
     public void showDatePickerDialog(View view) {
         DialogFragment newFragment = new FragmentDatePicker();
         newFragment.show(getSupportFragmentManager(), "datePicker");
