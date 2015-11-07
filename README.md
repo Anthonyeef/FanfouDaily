@@ -5,7 +5,9 @@
 
 
 
-Still under building.
+<del> Still under building. </del>
+
+Almost there ;)
 
 ### Screenshot
 
@@ -17,25 +19,16 @@ Still under building.
 ### 已完成：
 - 可以从 Api 接口中解析数据并完整呈现
 - 可以在「每日精选」和「每周精选」间切换
+- 可以查看 `2015-10-03` 之后的任意时间的 `每日精选`，以及最新一期的`每周精选`
 
+### TO DO
+- 增加卡片的点击事件
+- 实现饭否帐号登录，实现「收藏」「转发」等功能
+- 实现转发到其他平台
+- 夜间模式
+- 「每周精选」的 `Fragment` 底部增加 footer，浏览到最底部后可以自动加载上一期「每周精选」
+- 考虑增加这个[工具](https://github.com/mcxiaoke/gradle-packer-plugin)，用以管理多渠道打包和版本号
 
-
-
-### To do:
-- Feed 中的超链接呈现 :beers:
-- 下拉刷新 :beers:
-- 在解析 Api 之前先解析得到全部可以使用的 api 地址，从中挑选出 weekly 和 daily
-- 将 Api 地址放进 Database 中，下拉刷新时先对比 Database 中的 Api 地址是否已 update
-- 全面使用 butterknife 精简代码 :beers:
-- 复用 FragmentDaily 和 FragmentWeekly，精简代码
-- 支持饭否帐号登录，增加收藏功能
-- 点击 Feed 后能够进入 FragmentDetail :beers: 没有增加 `Fragment`，直接用了一个简单的`UIStatus` 实现比较容易XD
-- `Hometimeline` 中隐藏了图片，如果当前 feed 有图，右上角有 label 标明，点击后进入`UIStatus` 中查看图 :beers:
-- 自定义 `TextView` 中 Feed 的 CSS 樣式 
-- 自定义字体
-- 嘗試增加 `animation`
-- 增加 `FAB` :beers:
-- 增加 `DatePickerDialog` :beers:
 
 
 ## Some thing I would like to write it here:
