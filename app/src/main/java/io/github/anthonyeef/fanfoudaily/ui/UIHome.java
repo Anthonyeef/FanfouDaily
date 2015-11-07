@@ -14,14 +14,17 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.DatePicker;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import de.greenrobot.event.EventBus;
 import io.github.anthonyeef.fanfoudaily.R;
 import io.github.anthonyeef.fanfoudaily.adapter.PagerAdapter;
 import io.github.anthonyeef.fanfoudaily.fragment.FragmentDaily;
 import io.github.anthonyeef.fanfoudaily.fragment.FragmentWeekly;
+import io.github.anthonyeef.fanfoudaily.model.Date;
 
 public class UIHome extends AppCompatActivity {
 
@@ -120,8 +123,14 @@ public class UIHome extends AppCompatActivity {
 
         public void onDateSet(DatePicker view, int year, int month, int day) {
 //            Toast.makeText(getContext(), "You just select" + year + month + day, Toast.LENGTH_SHORT).show();
-            String date = year+"-"+month+"-"+day;
+            Calendar pickDate = Calendar.getInstance();
+            pickDate.set(year, month, day);
 
+            SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
+            String fdate = format1.format(pickDate.getTime());
+
+            Date date = new Date(fdate);
+            EventBus.getDefault().post(date);
         }
 
 

@@ -22,12 +22,16 @@ import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import de.greenrobot.event.EventBus;
 import io.github.anthonyeef.fanfoudaily.R;
+import io.github.anthonyeef.fanfoudaily.Utils.DateUtils;
 import io.github.anthonyeef.fanfoudaily.Utils.HttpUtils;
 import io.github.anthonyeef.fanfoudaily.Utils.LogUtils;
 import io.github.anthonyeef.fanfoudaily.adapter.FanfouAdapter;
 import io.github.anthonyeef.fanfoudaily.callbacks.RecyclerItemClickListener;
+import io.github.anthonyeef.fanfoudaily.controller.AppController;
 import io.github.anthonyeef.fanfoudaily.extras.FanfouUtils;
+import io.github.anthonyeef.fanfoudaily.model.Date;
 import io.github.anthonyeef.fanfoudaily.model.Fanfou;
 import io.github.anthonyeef.fanfoudaily.ui.UIStatus;
 import io.github.anthonyeef.fanfoudaily.volley.VolleySingleton;
@@ -41,7 +45,7 @@ public class FragmentDaily extends Fragment {
     private ArrayList<Fanfou> listFanfous = new ArrayList<>();
     private FanfouAdapter mFanfouAdapter;
 
-    String temp = "2015-11-07";
+    private String temp = DateUtils.getCurrentDate();
 
     @Bind(R.id.swipeFanfous) SwipeRefreshLayout mSwipeRefreshLayout;
     @Bind(R.id.recyclerview) RecyclerView mRecyclerView;
@@ -61,6 +65,8 @@ public class FragmentDaily extends Fragment {
 
         setupSwipeRefreshLayout();
         setupRecyclerView();
+
+        EventBus.getDefault().register(this);
 
         if (savedInstanceState != null) {
             listFanfous = savedInstanceState.getParcelableArrayList(DAILY_FANFOU);
@@ -85,6 +91,16 @@ public class FragmentDaily extends Fragment {
         return view;
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+    }
+
+    public void onEvent(Date date) {
+        AppController.setDate(date);
+        fetchData(AppController.getDate().getDate());
+    }
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);

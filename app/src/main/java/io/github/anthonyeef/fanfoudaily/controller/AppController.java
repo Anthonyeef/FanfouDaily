@@ -8,6 +8,8 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 
+import io.github.anthonyeef.fanfoudaily.model.Date;
+
 /**
  * Created by anthonyeef on 10/13/15.
  */
@@ -16,8 +18,8 @@ public class AppController extends Application {
     public static final String TAG = Application.class.getSimpleName();
 
     private static AppController mInstance;
-
     private RequestQueue mRequestQueue;
+    private static Date mDate;
 
     @Override
     public void onCreate() {
@@ -54,5 +56,13 @@ public class AppController extends Application {
         if (mRequestQueue != null) {
             mRequestQueue.cancelAll(tag);
         }
+    }
+
+    public static void setDate(Date date) {
+        mDate = date;
+    }
+
+    public static Date getDate() {
+        return mDate;
     }
 }

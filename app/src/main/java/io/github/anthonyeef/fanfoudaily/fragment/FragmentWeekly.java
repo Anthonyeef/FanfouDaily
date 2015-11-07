@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import io.github.anthonyeef.fanfoudaily.R;
+import io.github.anthonyeef.fanfoudaily.Utils.DateUtils;
 import io.github.anthonyeef.fanfoudaily.adapter.FanfouAdapter;
 import io.github.anthonyeef.fanfoudaily.callbacks.RecyclerItemClickListener;
 import io.github.anthonyeef.fanfoudaily.extras.FanfouUtils;
@@ -36,6 +37,8 @@ public class FragmentWeekly extends Fragment {
 
     private ArrayList<Fanfou> listFanfous = new ArrayList<>();
     private FanfouAdapter mFanfouAdapter;
+
+    private String temp = DateUtils.getCurrentMonday();
 
     @Bind(R.id.swipeFanfous) SwipeRefreshLayout mSwipeRefreshLayout;
     @Bind(R.id.recyclerview) RecyclerView mRecyclerView;
@@ -125,7 +128,8 @@ public class FragmentWeekly extends Fragment {
         @Override
         protected Integer doInBackground(Void... params) {
             Integer result = 0;
-            listFanfous = FanfouUtils.loadFanfouWeeklyFeeds(mRequestQueue);
+            temp = DateUtils.getCurrentMonday();
+            listFanfous = FanfouUtils.loadFanfouWeeklyFeeds(mRequestQueue, temp);
             result = 1;
             return result;
         }

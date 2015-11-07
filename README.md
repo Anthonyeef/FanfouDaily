@@ -1,8 +1,8 @@
 ## 饭否精选 第三方客户端 for Android
 
-「饭否精选」是我的一个小练习。RecyclerView + Volley. 另外使用的一些第三方库有 Butterknife 和 CircleView 等。
+「饭否精选」是我的一个小练习。RecyclerView + Volley. 另外使用的一些第三方库有 `Butterknife` , `EventBus`, `CircleView` 等。
 
-T^T 讲真我觉得我还是要再努力学习。
+
 
 
 Still under building.
