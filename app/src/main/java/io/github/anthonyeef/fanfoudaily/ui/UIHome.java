@@ -13,7 +13,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.DatePicker;
-import android.widget.Toast;
 
 import java.util.Calendar;
 
@@ -31,6 +30,8 @@ public class UIHome extends AppCompatActivity {
     @Bind(R.id.toolbar) Toolbar toolbar;
     @Bind(R.id.fab) FloatingActionButton mFloatingActionButton;
 
+    FragmentDaily fragmentDaily = new FragmentDaily();
+    FragmentWeekly fragmentWeekly = new FragmentWeekly();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +51,7 @@ public class UIHome extends AppCompatActivity {
                 showDatePickerDialog(v);
             }
         });
+
 
     }
 
@@ -75,8 +77,8 @@ public class UIHome extends AppCompatActivity {
     }
     public void setupViewPager(final ViewPager viewPager) {
         PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new FragmentDaily(), "每日精选");
-        adapter.addFragment(new FragmentWeekly(), "每周精选");
+        adapter.addFragment(fragmentDaily, "每日精选");
+        adapter.addFragment(fragmentWeekly, "每周精选");
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -117,7 +119,9 @@ public class UIHome extends AppCompatActivity {
         }
 
         public void onDateSet(DatePicker view, int year, int month, int day) {
-            Toast.makeText(getContext(), "You just select" + year + month + day, Toast.LENGTH_SHORT).show();
+//            Toast.makeText(getContext(), "You just select" + year + month + day, Toast.LENGTH_SHORT).show();
+            String date = year+"-"+month+"-"+day;
+
         }
 
 

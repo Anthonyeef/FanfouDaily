@@ -13,6 +13,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.VolleyError;
@@ -39,6 +40,8 @@ public class FragmentDaily extends Fragment {
 
     private ArrayList<Fanfou> listFanfous = new ArrayList<>();
     private FanfouAdapter mFanfouAdapter;
+
+    String temp = "2015-11-07";
 
     @Bind(R.id.swipeFanfous) SwipeRefreshLayout mSwipeRefreshLayout;
     @Bind(R.id.recyclerview) RecyclerView mRecyclerView;
@@ -67,7 +70,7 @@ public class FragmentDaily extends Fragment {
                     @Override
                     public void run() {
                         if (HttpUtils.isNetworkConnected(getContext())) {
-                            fetchData();
+                            fetchData(temp);
                         } else {
                             Snackbar.make(view, "Hey you don't have internet yet.", Snackbar.LENGTH_LONG).show();
                             if (mSwipeRefreshLayout.isRefreshing()) {
@@ -98,7 +101,7 @@ public class FragmentDaily extends Fragment {
                     @Override
                     public void run() {
                         if(HttpUtils.isNetworkConnected(getContext())) {
-                            fetchData();
+                            fetchData(temp);
                         } else {
                             Snackbar.make(getView(), "Hey you don't have internet yet.", Snackbar.LENGTH_LONG).show();
                             if (mSwipeRefreshLayout.isRefreshing()) {
@@ -132,8 +135,10 @@ public class FragmentDaily extends Fragment {
 
         private VolleySingleton mVolleySingleton;
         private RequestQueue mRequestQueue;
+        String date;
 
-        public TaskLoadFanfouDaily() {
+        public TaskLoadFanfouDaily(String date) {
+            this.date = date;
             mVolleySingleton = VolleySingleton.getInstance();
             mRequestQueue = mVolleySingleton.getRequestQueue();
         }
@@ -147,9 +152,8 @@ public class FragmentDaily extends Fragment {
         @Override
         protected Integer doInBackground(Void... params) {
             Integer result = 0;
-            listFanfous.clear();
             try {
-                listFanfous = FanfouUtils.loadFanfouDailyFeeds(mRequestQueue);
+                listFanfous = FanfouUtils.loadFanfouDailyFeeds(mRequestQueue, date);
                 throw new VolleyError("Ya Volley not working");
             } catch (VolleyError e) {
                 LogUtils.m("Something happend:"+ e );
@@ -176,9 +180,10 @@ public class FragmentDaily extends Fragment {
         startActivity(intent);
     }
 
-    private void fetchData() {
+    public void fetchData(String date) {
+        Toast.makeText(getContext(), "Start loading Fanfou on date:" + date, Toast.LENGTH_SHORT).show();
         mSwipeRefreshLayout.setRefreshing(true);
-        new TaskLoadFanfouDaily().execute();
+        new TaskLoadFanfouDaily(date).execute();
         mFanfouAdapter.setFanfous(listFanfous);
     }
 }
