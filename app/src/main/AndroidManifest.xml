@@ -16,6 +16,18 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="563df6d767e58e5b5b0006f1"/>
+
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="${UMENG_CHANNEL_VALUE}"/>
+
+        <meta-data
+            android:name="BUG_HD_SDK_GENERAL_KEY"
+            android:value="06f7da177991dd7317619dc10d9a5e27"/>
+
         <activity
             android:name=".ui.UIHome"
             android:label="@string/app_name"
@@ -32,15 +44,5 @@
             android:theme="@style/AppTheme" />
     </application>
 
-    <meta-data
-        android:name="UMENG_APPKEY"
-        android:value="563df6d767e58e5b5b0006f1"/>
 
-    <meta-data
-        android:name="UMENG_CHANNEL"
-        android:value="${UMENG_CHANNEL_VALUE}"/>
-
-    <meta-data
-        android:name="BUG_HD_SDK_GENERAL_KEY"
-        android:value="06f7da177991dd7317619dc10d9a5e27"/>
 </manifest>

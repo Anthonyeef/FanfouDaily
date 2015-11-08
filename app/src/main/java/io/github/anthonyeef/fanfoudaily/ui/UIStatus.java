@@ -43,7 +43,7 @@ public class UIStatus extends AppCompatActivity{
         setContentView(R.layout.activity_status);
         ButterKnife.bind(this);
         setSupportActionBar(mToolbar);
-        mProgressBar.setVisibility(View.VISIBLE);
+//        mProgressBar.setVisibility(View.VISIBLE);
 
         Fanfou feed = (Fanfou) intent.getParcelableExtra("feed");
 
@@ -54,7 +54,9 @@ public class UIStatus extends AppCompatActivity{
         Picasso.with(this).load(feed.getAvatarUrl())
                 .into(avatar1);
         if (!feed.getImageUrl().equals("")) {
-            Picasso.with(this).load(feed.getImageUrl()).into(image1, new ImageLoadedCallback(mProgressBar) {
+            Picasso.with(this).load(feed.getImageUrl())
+//                    .fit().centerInside()
+                    .into(image1, new ImageLoadedCallback(mProgressBar) {
                 @Override
                 public void onSuccess() {
                     if (this.mProgressBar != null) {
