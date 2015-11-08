@@ -36,7 +36,11 @@ Almost there ;)
 <del>And currently only support</del> 
 
 - Build from source code(using Android Studio).
-- [GitHub release](https://github.com/Anthonyeef/FanfouDaily/releases/download/0.9/app-github-release.apk) here ;)
+- [GitHub release](https://github.com/Anthonyeef/FanfouDaily/releases/download/0.9.1/app-fir-release.apk)
+- [Fir](http://fir.im/zhj3)
+- Scan QR code:
+
+<img src="screenshots/QRcode.png"  width="33%" />
 
 ## Some thing I would like to write it here:
 - 很感谢 [rex](https://github.com/zhasm) 提供的 Api，才使得这个小项目成为可能。
