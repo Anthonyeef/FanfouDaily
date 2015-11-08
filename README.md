@@ -39,7 +39,7 @@ Almost there ;)
 <del>And currently only support</del> 
 
 - Build from source code(using Android Studio).
-- [GitHub release](https://github.com/Anthonyeef/FanfouDaily/releases/download/0.9.1/app-fir-release.apk)
+- [GitHub release](https://github.com/Anthonyeef/FanfouDaily/releases/download/0.9.1/app-github-release.apk)
 - [Fir](http://fir.im/zhj3)
 - Scan QR code:
 
