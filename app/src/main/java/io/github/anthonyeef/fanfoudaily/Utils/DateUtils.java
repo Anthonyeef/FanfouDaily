@@ -24,10 +24,14 @@ public class DateUtils {
     public static String getCurrentMonday() {
         SimpleDateFormat formator = new SimpleDateFormat("yyyy-MM-dd");
         Calendar c = Calendar.getInstance();
+        Calendar now = Calendar.getInstance();
+        int day = now.get(Calendar.DAY_OF_WEEK);
 //        int hour = c.get(Calendar.HOUR);
         int hour = c.get(Calendar.HOUR_OF_DAY);
         c.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
-        if (hour < 8 && hour > 0) {
+        if (day == 1) {
+            c.add(Calendar.DAY_OF_WEEK, -7);
+        } else if (hour < 8 && hour > 0) {
             c.add(Calendar.DAY_OF_WEEK, -7);
         }
 

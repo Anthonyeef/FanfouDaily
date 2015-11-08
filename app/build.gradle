@@ -21,16 +21,15 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
 
                 }
-        signingConfigs {
-            release {
-                storeFile file(System.console().readLine("\n\$ Enter keystore path: "))
-                storePassword new String(System.console().readPassword("\n\$ Enter keystore password: "))
-                keyAlias System.console().readLine("\n\$ Enter key alias: ")
-                keyPassword new String(System.console().readPassword("\n\$ Enter key password: "))
-            }
-        }
+
             }
 
+    signingConfigs {
+        debug {
+
+        }
+
+    }
 
     productFlavors {
         github {
