@@ -28,7 +28,7 @@ import io.github.anthonyeef.fanfoudaily.Utils.HttpUtils;
 import io.github.anthonyeef.fanfoudaily.Utils.LogUtils;
 import io.github.anthonyeef.fanfoudaily.adapter.FanfouAdapter;
 import io.github.anthonyeef.fanfoudaily.callbacks.RecyclerItemClickListener;
-import io.github.anthonyeef.fanfoudaily.controller.AppController;
+import io.github.anthonyeef.fanfoudaily.MyApplication;
 import io.github.anthonyeef.fanfoudaily.extras.FanfouUtils;
 import io.github.anthonyeef.fanfoudaily.model.Date;
 import io.github.anthonyeef.fanfoudaily.model.Fanfou;
@@ -97,8 +97,8 @@ public class FragmentDaily extends Fragment {
     }
 
     public void onEvent(Date date) {
-        AppController.setDate(date);
-        fetchData(AppController.getDate().getDate());
+        MyApplication.setDate(date);
+        fetchData(MyApplication.getDate().getDate());
     }
     @Override
     public void onSaveInstanceState(Bundle outState) {

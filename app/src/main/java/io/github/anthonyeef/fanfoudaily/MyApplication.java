@@ -1,4 +1,4 @@
-package io.github.anthonyeef.fanfoudaily.controller;
+package io.github.anthonyeef.fanfoudaily;
 
 import android.app.Application;
 import android.content.Context;
@@ -14,11 +14,11 @@ import io.github.anthonyeef.fanfoudaily.model.Date;
 /**
  * Created by anthonyeef on 10/13/15.
  */
-public class AppController extends Application {
+public class MyApplication extends Application {
 
     public static final String TAG = Application.class.getSimpleName();
 
-    private static AppController mInstance;
+    private static MyApplication mInstance;
     private RequestQueue mRequestQueue;
     private static Date mDate;
 
@@ -30,7 +30,7 @@ public class AppController extends Application {
         mInstance = this;
     }
 
-    public static synchronized AppController getInstance() {
+    public static synchronized MyApplication getInstance() {
         return mInstance;
     }
 
