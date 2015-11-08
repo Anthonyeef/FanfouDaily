@@ -30,10 +30,13 @@ Almost there ;)
 - 考虑增加这个[工具](https://github.com/mcxiaoke/gradle-packer-plugin)，用以管理多渠道打包和版本号
 - 多语言支持
 
-### Download
-Still trying to figure out the publishing method.
+### Installation
+<del>Still trying to figure out the publishing method.</del>
 
-And currently only support build from source code(using Android Studio).
+<del>And currently only support</del> 
+
+- Build from source code(using Android Studio).
+- [GitHub release](https://github.com/Anthonyeef/FanfouDaily/releases/download/0.9/app-github-release.apk) here ;)
 
 ## Some thing I would like to write it here:
 - 很感谢 [rex](https://github.com/zhasm) 提供的 Api，才使得这个小项目成为可能。

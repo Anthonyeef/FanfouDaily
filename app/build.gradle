@@ -28,7 +28,12 @@ android {
         debug {
 
         }
-
+    /*    release {
+            storeFile file(System.console().readLine("\n\$ Enter keystore path: "))
+            storePassword new String(System.console().readPassword("\n\$ Enter keystore password: "))
+            keyAlias System.console().readLine("\n\$ Enter key alias: ")
+            keyPassword new String(System.console().readPassword("\n\$ Enter key password: "))
+        }*/
     }
 
     productFlavors {
