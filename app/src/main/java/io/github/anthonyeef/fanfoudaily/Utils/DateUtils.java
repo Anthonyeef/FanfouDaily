@@ -15,7 +15,7 @@ public class DateUtils {
 //        int hour = c.get(Calendar.HOUR);
         int hour = c.get(Calendar.HOUR_OF_DAY);
 
-        if (hour < 8 && hour > 0) {
+        if (hour < 8 && hour >= 0) {
             c.add(Calendar.DATE, -1);
         }
         return formator.format(c.getTime());
@@ -31,7 +31,7 @@ public class DateUtils {
         c.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
         if (day == 1) {
             c.add(Calendar.DAY_OF_WEEK, -7);
-        } else if (hour < 8 && hour > 0) {
+        } else if (hour < 8 && hour >= 0) {
             c.add(Calendar.DAY_OF_WEEK, -7);
         }
 

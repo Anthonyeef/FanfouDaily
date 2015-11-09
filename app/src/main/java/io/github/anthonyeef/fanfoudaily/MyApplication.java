@@ -7,6 +7,7 @@ import android.text.TextUtils;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
+import com.umeng.analytics.MobclickAgent;
 
 import im.fir.sdk.FIR;
 import io.github.anthonyeef.fanfoudaily.model.Date;
@@ -24,7 +25,7 @@ public class MyApplication extends Application {
 
     @Override
     public void onCreate() {
-
+        MobclickAgent.setCatchUncaughtExceptions(false);
         FIR.init(this);
         super.onCreate();
         mInstance = this;

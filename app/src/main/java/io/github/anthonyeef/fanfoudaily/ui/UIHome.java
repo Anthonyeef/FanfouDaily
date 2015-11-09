@@ -43,6 +43,7 @@ public class UIHome extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         MobclickAgent.updateOnlineConfig(this);
+        MobclickAgent.setCatchUncaughtExceptions(false);
 
         setContentView(R.layout.activity_home);
 

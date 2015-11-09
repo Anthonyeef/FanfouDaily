@@ -37,6 +37,7 @@ public class UIStatus extends AppCompatActivity{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        MobclickAgent.setCatchUncaughtExceptions(false);
         Intent intent = getIntent();
 
 
