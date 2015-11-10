@@ -27,17 +27,18 @@ public class DateUtils {
     public static String getCurrentMonday() {
         SimpleDateFormat formator = new SimpleDateFormat("yyyy-MM-dd");
         Calendar c = Calendar.getInstance();
-        Calendar now = Calendar.getInstance();
-        int day = now.get(Calendar.DAY_OF_WEEK);
-//        int hour = c.get(Calendar.HOUR);
-        int hour = c.get(Calendar.HOUR_OF_DAY);
-        c.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
-        if (day == 1) {
-            c.add(Calendar.DAY_OF_WEEK, -7);
-        } else if (hour < 8 && hour >= 0) {
-            c.add(Calendar.DAY_OF_WEEK, -7);
-        }
 
+        int day = c.get(Calendar.DAY_OF_WEEK);
+        LogUtils.m("Now is day:" + day);
+        int hour = c.get(Calendar.HOUR_OF_DAY);
+        LogUtils.m("Now is hour:" + hour);
+        c.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
+
+        if (day == 2) {
+            if (hour < 8 && hour >=0) {
+                c.add(Calendar.DAY_OF_WEEK, -7);
+            }
+        }
         return formator.format(c.getTime());
     }
 }

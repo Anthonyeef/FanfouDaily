@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="@string/app_setting_about">
+        <Preference
+            android:key="fanfoudaily"
+            android:title="@string/action_visit_fanfoudaily" />
+        <Preference
+            android:key="changelog"
+            android:title="@string/changelog" />
+        <Preference
+            android:key="developer"
+            android:title="@string/developer" />
+    </PreferenceCategory>
+</PreferenceScreen>

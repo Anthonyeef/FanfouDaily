@@ -2,6 +2,7 @@ package io.github.anthonyeef.fanfoudaily.ui;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
@@ -79,7 +80,8 @@ public class UIHome extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.action_settings) {
-            return true;
+            Intent i = new Intent(this, UIPreference.class);
+            startActivity(i);
         }
 
         return super.onOptionsItemSelected(item);
