@@ -30,11 +30,13 @@ import io.github.anthonyeef.fanfoudaily.model.Date;
 
 public class UIHome extends AppCompatActivity {
 
-    @Bind(R.id.viewPager) ViewPager viewPager;
+//    @Bind(R.id.viewPager) ViewPager viewPager;
+    public static ViewPager viewPager;
     @Bind(R.id.tabs) TabLayout tabLayout;
     @Bind(R.id.toolbar) Toolbar toolbar;
     @Bind(R.id.fab) FloatingActionButton mFloatingActionButton;
 
+    public static boolean isFABinCurrentTabVisible = true;
     FragmentDaily fragmentDaily = new FragmentDaily();
     FragmentWeekly fragmentWeekly = new FragmentWeekly();
 
@@ -46,6 +48,8 @@ public class UIHome extends AppCompatActivity {
         MobclickAgent.setCatchUncaughtExceptions(false);
 
         setContentView(R.layout.activity_home);
+
+        viewPager = (ViewPager) findViewById(R.id.viewPager);
 
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
@@ -112,9 +116,11 @@ public class UIHome extends AppCompatActivity {
             public void onPageSelected(int position) {
                 switch (position) {
                     case 0:
+//                        isFABinCurrentTabVisible = true;
                         mFloatingActionButton.show();
                         break;
                     default:
+//                        isFABinCurrentTabVisible = false;
                         mFloatingActionButton.hide();
                         break;
                 }

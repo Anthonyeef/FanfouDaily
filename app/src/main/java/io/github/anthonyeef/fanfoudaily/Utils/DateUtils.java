@@ -14,6 +14,9 @@ public class DateUtils {
         Calendar c = Calendar.getInstance();
 //        int hour = c.get(Calendar.HOUR);
         int hour = c.get(Calendar.HOUR_OF_DAY);
+        if (hour == 8) {
+            hour = 9;
+        }
 
         if (hour < 8 && hour >= 0) {
             c.add(Calendar.DATE, -1);

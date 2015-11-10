@@ -7,6 +7,8 @@ import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
 import android.view.View;
 
+import io.github.anthonyeef.fanfoudaily.ui.UIHome;
+
 /**
  * Created by anthonyeef on 11/4/15.
  */
@@ -28,10 +30,13 @@ public class ScrollAwareFABBehavior extends FloatingActionButton.Behavior{
     public void onNestedScroll(CoordinatorLayout coordinatorLayout, FloatingActionButton child,
                                View target, int dxConsumed, int dyConsunmed, int dxUnconsumed,
                                int dyUnconsumed) {
-        if (dyConsunmed > 0 && child.getVisibility() == View.VISIBLE) {
-            child.hide();
-        } else if (dyConsunmed < 0 && child.getVisibility() != View.VISIBLE ) {
-            child.show();
+        if (UIHome.viewPager.getCurrentItem() == 0) {
+            if (dyConsunmed > 0 && child.getVisibility() == View.VISIBLE ) {
+                child.hide();
+            } else if (dyConsunmed < 0 && child.getVisibility() != View.VISIBLE) {
+                child.show();
+            }
+
         }
     }
 }
