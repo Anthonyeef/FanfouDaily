@@ -7,10 +7,9 @@ import java.util.Calendar;
  * Created by anthonyeef on 11/7/15.
  */
 public class DateUtils {
-
+    public static SimpleDateFormat formator = new SimpleDateFormat("yyyy-MM-dd");
 
     public static String getCurrentDate() {
-        SimpleDateFormat formator = new SimpleDateFormat("yyyy-MM-dd");
         Calendar c = Calendar.getInstance();
 //        int hour = c.get(Calendar.HOUR);
         int hour = c.get(Calendar.HOUR_OF_DAY);
@@ -25,7 +24,6 @@ public class DateUtils {
     }
 
     public static String getCurrentMonday() {
-        SimpleDateFormat formator = new SimpleDateFormat("yyyy-MM-dd");
         Calendar c = Calendar.getInstance();
 
         int day = c.get(Calendar.DAY_OF_WEEK);
