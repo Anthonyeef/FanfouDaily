@@ -37,7 +37,7 @@ public class UIHome extends AppCompatActivity {
     @Bind(R.id.toolbar) Toolbar toolbar;
     @Bind(R.id.fab) FloatingActionButton mFloatingActionButton;
 
-    public static boolean isFABinCurrentTabVisible = true;
+//    public static boolean isFABinCurrentTabVisible = true;
     FragmentDaily fragmentDaily = new FragmentDaily();
     FragmentWeekly fragmentWeekly = new FragmentWeekly();
 

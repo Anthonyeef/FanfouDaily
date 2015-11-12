@@ -4,7 +4,8 @@
     <PreferenceCategory android:title="@string/app_setting_about" >
         <Preference
             android:key="fanfoudaily"
-            android:title="@string/action_visit_fanfoudaily" />
+            android:title="@string/action_visit_fanfoudaily"
+            android:summary="@string/project_address"/>
         <Preference
             android:key="changelog"
             android:title="@string/changelog" />

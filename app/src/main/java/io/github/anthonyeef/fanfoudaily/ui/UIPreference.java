@@ -24,6 +24,8 @@ public class UIPreference extends AppCompatPreferenceActivity{
 
 //        setContentView(R.xml.main_prefs);
         setupActionBar();
+//        getFragmentManager().beginTransaction().replace(R.id.pref_container, new FragmentPreference()).commit();
+
     }
 
     private void setupActionBar() {

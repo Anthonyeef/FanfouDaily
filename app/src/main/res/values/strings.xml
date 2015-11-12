@@ -12,4 +12,7 @@
     <string name="changelog">Changelog</string>
     <string name="developer">Developer</string>
 
+    <string name="blog_address">https://anthonyeef.github.io</string>
+    <string name="project_address">https://anthonyeef.github.io/FanfouDaily</string>
+
 </resources>
