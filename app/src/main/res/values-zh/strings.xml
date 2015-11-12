@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string name="app_name">饭否精选</string>
+<string name="action_settings">设置</string>
+
+<string name="name">Screen Name</string>
+<string name="timestamp">Timestamp</string>
+<string name="scrollawarefab">io.github.anthonyeef.fanfoudaily.animation.ScrollAwareFABBehavior</string>
+<string name="daily">每日精选</string>
+<string name="weekly">每周精选</string>
+
+
+<string name="app_setting_about">关于</string>
+<string name="action_visit_fanfoudaily">项目主页</string>
+<string name="action_visit_repo">查看 GitHub repository</string>
+<string name="changelog">更新记录</string>
+<string name="developer">开发者</string>
+
+</resources>

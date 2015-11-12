@@ -4,15 +4,19 @@
 
     <string name="name">Screen Name</string>
     <string name="timestamp">Timestamp</string>
+    <string name="daily">Daily</string>
+    <string name="weekly">Weekly</string>
     <string name="scrollawarefab">io.github.anthonyeef.fanfoudaily.animation.ScrollAwareFABBehavior</string>
 
 
     <string name="app_setting_about">About</string>
     <string name="action_visit_fanfoudaily">Visit FanfouDaily Homepage</string>
+    <string name="action_visit_repo">Check Github Repository</string>
     <string name="changelog">Changelog</string>
     <string name="developer">Developer</string>
 
     <string name="blog_address">https://anthonyeef.github.io</string>
     <string name="project_address">https://anthonyeef.github.io/FanfouDaily</string>
+    <string name="project_github">https://github.com/Anthonyeef/FanfouDaily</string>
 
 </resources>

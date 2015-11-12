@@ -105,8 +105,8 @@ public class UIHome extends AppCompatActivity {
     }
     public void setupViewPager(final ViewPager viewPager) {
         PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(fragmentDaily, "每日精选");
-        adapter.addFragment(fragmentWeekly, "每周精选");
+        adapter.addFragment(fragmentDaily, getString(R.string.daily));
+        adapter.addFragment(fragmentWeekly, getString(R.string.weekly));
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override

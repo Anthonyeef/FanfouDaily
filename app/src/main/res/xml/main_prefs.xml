@@ -4,13 +4,22 @@
     <PreferenceCategory android:title="@string/app_setting_about" >
         <Preference
             android:key="fanfoudaily"
-            android:title="@string/action_visit_fanfoudaily"
-            android:summary="@string/project_address"/>
+            android:title="@string/action_visit_fanfoudaily">
+            <intent android:action="android.intent.action.VIEW"
+                    android:data="@string/project_address"/>
+        </Preference>
+        <Preference
+            android:key="project_github"
+            android:title="@string/action_visit_repo">
+            <intent android:action="android.intent.action.VIEW"
+                    android:data="@string/project_github"/>
+        </Preference>
         <Preference
             android:key="changelog"
-            android:title="@string/changelog" />
+            android:title="@string/changelog"/>
         <Preference
             android:key="developer"
-            android:title="@string/developer" />
+            android:title="@string/developer">
+        </Preference>
     </PreferenceCategory>
 </PreferenceScreen>
