@@ -9,7 +9,7 @@ import io.github.anthonyeef.fanfoudaily.MyApplication;
  * Created by anthonyeef on 10/17/15.
  */
 public class VolleySingleton {
-    private static VolleySingleton instance = null;
+    public static VolleySingleton instance = null;
     private RequestQueue mRequestQueue;
     private VolleySingleton() {
         mRequestQueue = Volley.newRequestQueue(MyApplication.getAppContext());

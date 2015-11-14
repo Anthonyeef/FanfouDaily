@@ -75,9 +75,11 @@ public class FragmentDaily extends Fragment {
                     @Override
                     public void run() {
                         if (HttpUtils.isNetworkConnected(getContext())) {
+                            mSwipeRefreshLayout.setRefreshing(true);
+                            Snackbar.make(mRecyclerView, getString(R.string.action_loading) + temp, Snackbar.LENGTH_SHORT).show();
                             fetchData(temp);
                         } else {
-                            Snackbar.make(view, "Hey you don't have internet yet.", Snackbar.LENGTH_LONG).show();
+                            Snackbar.make(view, getString(R.string.network_notworking), Snackbar.LENGTH_LONG).show();
                             if (mSwipeRefreshLayout.isRefreshing()) {
                                 mSwipeRefreshLayout.setRefreshing(false);
                             }
@@ -91,6 +93,13 @@ public class FragmentDaily extends Fragment {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        if (listFanfous.isEmpty()){
+            fetchData(temp);
+        }
+    }
+    @Override
     public void onDestroy() {
         super.onDestroy();
         EventBus.getDefault().unregister(this);
@@ -98,6 +107,7 @@ public class FragmentDaily extends Fragment {
 
     public void onEvent(Date date) {
         MyApplication.setDate(date);
+        Snackbar.make(mRecyclerView, getString(R.string.action_loading) + MyApplication.getDate().getDate(), Snackbar.LENGTH_SHORT).show();
         fetchData(MyApplication.getDate().getDate());
     }
     @Override
@@ -116,9 +126,10 @@ public class FragmentDaily extends Fragment {
                     @Override
                     public void run() {
                         if(HttpUtils.isNetworkConnected(getContext())) {
+                            Snackbar.make(mRecyclerView, getString(R.string.action_loading) + temp, Snackbar.LENGTH_SHORT).show();
                             fetchData(temp);
                         } else {
-                            Snackbar.make(getView(), "Hey you don't have internet yet.", Snackbar.LENGTH_LONG).show();
+                            Snackbar.make(getView(), getString(R.string.network_notworking), Snackbar.LENGTH_LONG).show();
                             if (mSwipeRefreshLayout.isRefreshing()) {
                                 mSwipeRefreshLayout.setRefreshing(false);
                             }
@@ -196,8 +207,6 @@ public class FragmentDaily extends Fragment {
     }
 
     public void fetchData(String date) {
-//        Toast.makeText(getContext(), "Start loading Fanfou on date:" + date, Toast.LENGTH_SHORT).show();
-        Snackbar.make(mRecyclerView, "Loading Fanfou on date:" + date, Snackbar.LENGTH_SHORT).show();
         mSwipeRefreshLayout.setRefreshing(true);
         new TaskLoadFanfouDaily(date).execute();
         mFanfouAdapter.setFanfous(listFanfous);

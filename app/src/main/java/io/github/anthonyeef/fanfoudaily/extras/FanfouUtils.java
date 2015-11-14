@@ -17,8 +17,6 @@ import io.github.anthonyeef.fanfoudaily.volley.Requestor;
 public class FanfouUtils {
     public static ArrayList<Fanfou> loadFanfouDailyFeeds(RequestQueue requestQueue, String date) {
         JSONObject response = Requestor.requestJSON(requestQueue, UrlUtils.getRequestUrlHead() + date + UrlUtils.getRequestUrlDailyEnd());
-//        Log.v("Getting response from", UrlUtils.getRequestUrlFanfouDaily());
-//        Log.v("Loading", response.toString());
         ArrayList<Fanfou> fanfous = Parser.parseFanfouJSON(response);
 
         return fanfous;
@@ -27,8 +25,6 @@ public class FanfouUtils {
     public static ArrayList<Fanfou> loadFanfouWeeklyFeeds(RequestQueue requestQueue, String date) {
 
         JSONObject response = Requestor.requestJSON(requestQueue, UrlUtils.getRequestUrlHead() + date + UrlUtils.getRequestUrlWeeklyEnd());
-//        Log.v("Getting response from", UrlUtils.getRequestUrlFanfouWeekly());
-//        Log.v("Loading", response.toString());
         ArrayList<Fanfou> fanfous = Parser.parseFanfouJSON(response);
 
         return fanfous;

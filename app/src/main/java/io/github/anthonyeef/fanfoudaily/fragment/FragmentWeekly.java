@@ -103,6 +103,14 @@ public class FragmentWeekly extends Fragment {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        if (listFanfous.isEmpty()){
+            new TaskLoadFanfouWeekly().execute();
+        }
+    }
+
+    @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putParcelableArrayList(WEEKLY_FANFOU, listFanfous);

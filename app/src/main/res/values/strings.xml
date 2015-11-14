@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">FanfouDaily</string>
     <string name="action_settings">Settings</string>
+    <string name="action_loading">Loading Fanfou on date: </string>
+    <string name="network_notworking">Hey you don\'t have internet yet.</string>
 
     <string name="name">Screen Name</string>
     <string name="timestamp">Timestamp</string>
@@ -15,8 +17,9 @@
     <string name="changelog">Changelog</string>
     <string name="developer">Developer</string>
 
-    <string name="blog_address">https://anthonyeef.github.io</string>
-    <string name="project_address">https://anthonyeef.github.io/FanfouDaily</string>
-    <string name="project_github">https://github.com/Anthonyeef/FanfouDaily</string>
+    <string name="coder"> \u0040Anthonyeef</string>
 
+    <string name="blog_address">https://anthonyeef.github.io</string>
+    <string name="project_address">https://anthonyeef.github.io/project/android/fanfoudaily</string>
+    <string name="project_github">https://github.com/Anthonyeef/FanfouDaily</string>
 </resources>

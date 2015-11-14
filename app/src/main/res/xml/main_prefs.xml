@@ -15,11 +15,9 @@
                     android:data="@string/project_github"/>
         </Preference>
         <Preference
-            android:key="changelog"
-            android:title="@string/changelog"/>
-        <Preference
             android:key="developer"
-            android:title="@string/developer">
+            android:title="@string/developer"
+            android:summary="@string/coder">
         </Preference>
     </PreferenceCategory>
 </PreferenceScreen>
