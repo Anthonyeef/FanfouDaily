@@ -38,6 +38,7 @@ public class Parser {
                     JSONObject fanfou = message.getJSONObject(i);
                     name = fanfou.getString(KEY_REALNAME);
                     avatar = fanfou.getString(KEY_AVATAR);
+                    avatar = avatar.replace("s0", "l0");
                     time = fanfou.getString(KEY_TIME);
                     msg = fanfou.getString(KEY_MESSAGE);
 
