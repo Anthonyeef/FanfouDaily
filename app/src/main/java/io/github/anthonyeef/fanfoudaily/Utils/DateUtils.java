@@ -32,6 +32,9 @@ public class DateUtils {
         LogUtils.m("Now is hour:" + hour);
         c.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
 
+        if (day == 1) {
+            c.add(Calendar.DAY_OF_WEEK, -7);
+        }
         if (day == 2) {
             if (hour < 8 && hour >=0) {
                 c.add(Calendar.DAY_OF_WEEK, -7);
